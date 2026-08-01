@@ -1,7 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
 import { SiteFooter, SiteHeader } from "../components/SiteShell";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  colorScheme: "dark",
+  themeColor: "#0a0a0a",
+};
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -20,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "%s | AI VIDEO SUPPLY",
     },
     description:
-      "Kling과 Seedance의 국내 B2B 도입을 위한 프론트엔드 프로토타입",
+      "Kling Creative Studio의 다크 디자인 토큰을 적용한 국내 B2B 도입 프로토타입",
     openGraph: {
       title: "AI VIDEO SUPPLY",
       description: "KLING · SEEDANCE B2B PROTOTYPE",
@@ -29,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: `${origin}/og.png`,
+          url: `${origin}/og-dark.png`,
           width: 1200,
           height: 630,
           alt: "AI VIDEO SUPPLY — KLING · SEEDANCE B2B PROTOTYPE",
@@ -40,7 +45,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "AI VIDEO SUPPLY",
       description: "KLING · SEEDANCE B2B PROTOTYPE",
-      images: [`${origin}/og.png`],
+      images: [`${origin}/og-dark.png`],
     },
   };
 }

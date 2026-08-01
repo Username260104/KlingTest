@@ -1,6 +1,6 @@
 # AI VIDEO SUPPLY — Frontend Prototype
 
-Kling과 Seedance의 국내 B2B 공급 사이트를 빠르게 검토하기 위한 프론트엔드 프로토타입입니다.
+Kling과 Seedance의 국내 B2B 공급 사이트를 빠르게 검토하기 위한 프론트엔드 프로토타입입니다. 전반적인 UI는 Kling Creative Studio의 다크 디자인 토큰을 바탕으로 구성했습니다.
 
 ## 화면
 
