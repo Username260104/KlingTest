@@ -12,7 +12,11 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="page-shell header-inner">
         <Link href="/" className="brand" aria-label="AI VIDEO SUPPLY 홈">
-          <span className="brand-mark">AV</span>
+          <span className="brand-mark" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
           <span>AI VIDEO SUPPLY</span>
         </Link>
 
@@ -50,10 +54,14 @@ export function SiteFooter() {
       <div className="page-shell footer-grid">
         <div>
           <div className="brand footer-brand">
-            <span className="brand-mark">AV</span>
+            <span className="brand-mark" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
             <span>AI VIDEO SUPPLY</span>
           </div>
-          <p>광고대행사·영상제작사를 위한 AI 영상 생성 모델 B2B 도입</p>
+          <p>기업을 위한 AI 영상 생성 모델 도입·공급·기술지원</p>
         </div>
         <div>
           <span className="footer-label">PAGES</span>

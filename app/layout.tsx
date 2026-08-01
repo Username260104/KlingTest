@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "%s | AI VIDEO SUPPLY",
     },
     description:
-      "Kling Creative Studio의 다크 디자인 토큰을 적용한 국내 B2B 도입 프로토타입",
+      "기업을 위한 Kling·Seedance AI 영상 생성 인프라 도입 프로토타입",
     openGraph: {
       title: "AI VIDEO SUPPLY",
       description: "KLING · SEEDANCE B2B PROTOTYPE",

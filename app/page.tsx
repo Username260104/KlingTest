@@ -3,9 +3,9 @@ import Link from "next/link";
 import { ContentNeeded, SectionHeading } from "../components/SiteShell";
 
 export const metadata: Metadata = {
-  title: "Kling·Seedance 국내 B2B 도입",
+  title: "Kling and Seedance | 국내 B2B 도입",
   description:
-    "광고대행사와 영상제작사를 위한 AI 영상 생성 모델 공급 서비스 프론트엔드 프로토타입",
+    "기업을 위한 AI 영상 생성 모델 공급 서비스 프론트엔드 프로토타입",
 };
 
 const services = [
@@ -54,13 +54,14 @@ export default function Home() {
     <>
       <section className="hero page-shell">
         <div className="hero-copy">
-          <div className="eyebrow">
-            <span className="live-dot" /> 광고대행사·영상제작사를 위한 B2B 도입
-          </div>
-          <h1>
-            글로벌 AI 영상 모델을
-            <span>국내 계약으로.</span>
+          <h1 className="hero-product-title">
+            Kling
+            <span>and Seedance</span>
           </h1>
+          <div className="eyebrow">
+            <span className="live-dot" /> 기업을 위한 AI 영상 생성 인프라
+          </div>
+          <p className="hero-positioning">글로벌 AI 영상 모델을 국내 계약으로.</p>
           <p className="hero-lead">
             Kling과 Seedance 도입에 필요한 계약, 결제, 사용량 공급과
             기술지원을 한 곳에서 상담하세요.

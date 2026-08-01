@@ -1539,6 +1539,7 @@ body {
 
 .brand-mark {
   width: 36px;
+  position: relative;
   border: 1px solid rgb(255 255 255 / 14%);
   border-radius: 10px;
   background: var(--color-gradient-button);
@@ -1546,6 +1547,40 @@ body {
   box-shadow:
     0.5px 0.5px 0.5px rgb(255 255 255 / 32%) inset,
     -0.5px -0.5px 0.5px rgb(255 255 255 / 16%) inset;
+}
+
+.brand-mark > span {
+  position: absolute;
+  display: block;
+  background: #091008;
+}
+
+.brand-mark > span:nth-child(1) {
+  top: 10px;
+  left: 8px;
+  width: 13px;
+  height: 3px;
+  border-radius: 999px;
+}
+
+.brand-mark > span:nth-child(2) {
+  bottom: 10px;
+  left: 8px;
+  width: 9px;
+  height: 3px;
+  border-radius: 999px;
+}
+
+.brand-mark > span:nth-child(3) {
+  top: 50%;
+  right: 7px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid #091008;
+  background: transparent;
+  transform: translateY(-50%);
 }
 
 .desktop-nav {
@@ -1601,6 +1636,21 @@ body {
   font-size: clamp(56px, 6.4vw, 94px);
   font-weight: 650;
   letter-spacing: -0.07em;
+}
+
+.hero .hero-product-title {
+  margin: 0 0 24px;
+}
+
+.hero-positioning {
+  max-width: 620px;
+  margin: 22px 0 14px;
+  color: var(--color-text-1);
+  font-size: clamp(20px, 2.1vw, 30px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.35;
+  word-break: keep-all;
 }
 
 .hero h1 span {
