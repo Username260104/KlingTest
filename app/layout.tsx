@@ -21,31 +21,31 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: {
-      default: "AI VIDEO SUPPLY",
-      template: "%s | AI VIDEO SUPPLY",
+      default: "Entresol",
+      template: "%s | Entresol",
     },
     description:
       "Kling·Seedance 국내 공식 총판의 기업용 크레딧 공급 및 국내 계약 안내",
     openGraph: {
-      title: "국내 공식 총판 | AI VIDEO SUPPLY",
+      title: "국내 공식 총판 | Entresol",
       description: "기업용 크레딧을 기준가 대비 최대 30% 할인된 금액으로",
       url: origin,
-      siteName: "AI VIDEO SUPPLY",
+      siteName: "Entresol",
       type: "website",
       images: [
         {
-          url: `${origin}/og-official-distributor.png`,
+          url: `${origin}/og-entresol.png`,
           width: 1200,
           height: 630,
-          alt: "AI VIDEO SUPPLY — 국내 공식 총판, 기업용 크레딧 최대 30% 할인",
+          alt: "Entresol — 국내 공식 총판, 기업용 크레딧 최대 30% 할인",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "국내 공식 총판 | AI VIDEO SUPPLY",
+      title: "국내 공식 총판 | Entresol",
       description: "기업용 크레딧을 기준가 대비 최대 30% 할인된 금액으로",
-      images: [`${origin}/og-official-distributor.png`],
+      images: [`${origin}/og-entresol.png`],
     },
   };
 }

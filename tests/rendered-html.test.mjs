@@ -38,7 +38,7 @@ for (const [pathname, expectedText] of routes) {
 
     const html = await response.text();
     assert.match(html, new RegExp(expectedText));
-    assert.match(html, /AI VIDEO SUPPLY/);
+    assert.match(html, /Entresol/);
     assert.doesNotMatch(html, /codex-preview/);
   });
 }

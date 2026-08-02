@@ -47,7 +47,7 @@ export default function Home() {
     <>
       <section className="official-hero" aria-labelledby="official-hero-title">
         <div className="official-hero-content">
-          <p className="official-hero-label">AI VIDEO SUPPLY · KOREA</p>
+          <p className="official-hero-label">ENTRESOL · KOREA</p>
           <h1 id="official-hero-title">국내 공식 총판</h1>
           <p className="official-hero-subtitle">
             기업용 크레딧을 기준가 대비 <strong>최대 30%</strong> 할인된 금액으로

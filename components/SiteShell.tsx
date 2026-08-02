@@ -9,13 +9,13 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="page-shell header-inner">
-        <Link href="/" className="brand" aria-label="AI VIDEO SUPPLY 홈">
+        <Link href="/" className="brand" aria-label="Entresol 홈">
           <span className="brand-mark" aria-hidden="true">
             <span />
             <span />
             <span />
           </span>
-          <span>AI VIDEO SUPPLY</span>
+          <span>Entresol</span>
         </Link>
 
         <nav className="desktop-nav" aria-label="주요 메뉴">
@@ -57,7 +57,7 @@ export function SiteFooter() {
               <span />
               <span />
             </span>
-            <span>AI VIDEO SUPPLY</span>
+            <span>Entresol</span>
           </div>
           <p>국내 공식 총판 · 기업용 크레딧 공급</p>
         </div>

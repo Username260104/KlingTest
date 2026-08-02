@@ -1,4 +1,4 @@
-# AI VIDEO SUPPLY — Frontend Prototype
+# Entresol — Frontend Prototype
 
 Kling과 Seedance의 국내 공식 총판·기업용 크레딧 공급 메시지를 빠르게 검토하기 위한 프론트엔드 프로토타입입니다. 전반적인 UI는 Kling Creative Studio의 다크 디자인 토큰을 바탕으로 구성했습니다.
 
