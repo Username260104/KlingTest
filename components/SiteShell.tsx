@@ -2,8 +2,6 @@ import Link from "next/link";
 
 const navigation = [
   { label: "홈", href: "/" },
-  { label: "지원 모델", href: "/models" },
-  { label: "계약·도입", href: "/plans" },
   { label: "회사·파트너", href: "/company" },
 ];
 
@@ -28,8 +26,8 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <Link href="/contact?type=quote" className="header-cta">
-          기업 견적 요청 <span aria-hidden="true">↗</span>
+        <Link href="/contact" className="header-cta">
+          문의하기 <span aria-hidden="true">↗</span>
         </Link>
 
         <details className="mobile-menu">
@@ -40,7 +38,7 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <Link href="/contact?type=quote">기업 견적 요청 ↗</Link>
+            <Link href="/contact">문의하기 ↗</Link>
           </nav>
         </details>
       </div>
@@ -61,7 +59,7 @@ export function SiteFooter() {
             </span>
             <span>AI VIDEO SUPPLY</span>
           </div>
-          <p>기업을 위한 AI 영상 생성 모델 도입·공급·기술지원</p>
+          <p>국내 공식 총판 · 기업용 크레딧 공급</p>
         </div>
         <div>
           <span className="footer-label">PAGES</span>
@@ -73,6 +71,7 @@ export function SiteFooter() {
         </div>
         <div>
           <span className="footer-label">CONTACT</span>
+          <Link href="/contact">문의하기</Link>
           <span>[대표 이메일]</span>
           <span>[대표 전화]</span>
           <span>[회사 주소]</span>

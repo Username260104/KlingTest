@@ -44,7 +44,7 @@ const plans = [
 ];
 
 const steps = [
-  ["01", "상담·견적 요청", "회사와 담당자, 사용 목적을 간단히 남깁니다."],
+  ["01", "문의하기", "회사와 담당자, 사용 목적을 간단히 남깁니다."],
   ["02", "사용량 확인", "월 생성 규모와 평균 영상 조건을 확인합니다."],
   ["03", "모델·계약 제안", "적합 모델과 크레딧 또는 월 계약 방식을 제안합니다."],
   ["04", "계약·결제", "국내 계약과 원화 결제 조건을 확정합니다."],
@@ -59,7 +59,7 @@ export default function PlansPage() {
         index="02 / PLANS"
         eyebrow="CONTRACT + ONBOARDING"
         title="고정 가격표보다 사용 방식에 맞는 계약."
-        description="1차 사이트에서는 온라인 결제 없이 네 가지 계약 구조를 보여주고, 상담 후 별도 견적으로 연결합니다."
+        description="1차 사이트에서는 온라인 결제 없이 네 가지 계약 구조를 보여주고, 문의 후 개별 조건을 제안합니다."
       />
 
       <section className="subpage-section page-shell">
@@ -75,7 +75,7 @@ export default function PlansPage() {
               <h3>{plan.title}</h3>
               <strong className="price-placeholder">{plan.price}</strong>
               <p>{plan.body}</p>
-              <Link href={`/contact?type=quote&plan=${plan.value}`} className="text-link">
+              <Link href={`/contact?plan=${plan.value}`} className="text-link">
                 이 방식으로 문의 →
               </Link>
             </article>

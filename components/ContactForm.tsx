@@ -6,16 +6,13 @@ import { useSearchParams } from "next/navigation";
 export function ContactForm() {
   const searchParams = useSearchParams();
   const [submitted, setSubmitted] = useState(false);
-  const [type, setType] = useState("consult");
   const [model, setModel] = useState("undecided");
   const [plan, setPlan] = useState("undecided");
 
   useEffect(() => {
-    const nextType = searchParams.get("type");
     const nextModel = searchParams.get("model");
     const nextPlan = searchParams.get("plan");
 
-    if (nextType === "quote" || nextType === "consult") setType(nextType);
     if (["kling", "seedance", "both", "undecided"].includes(nextModel ?? "")) {
       setModel(nextModel ?? "undecided");
     }
@@ -34,10 +31,10 @@ export function ContactForm() {
       <div className="form-success" role="status">
         <div>
           <div className="success-mark">✓</div>
-          <h2>완료 화면은 이렇게 보입니다.</h2>
+          <h2>문의 입력이 완료되었습니다.</h2>
           <p>
-            프론트엔드 프로토타입이라 실제 문의는 전송되지 않았습니다. 실제 구현에서는
-            접수번호와 예상 회신 시간을 이곳에 표시합니다.
+            현재 프론트엔드 프로토타입에서는 실제 문의가 전송되지 않습니다.
+            실제 운영 시 접수번호와 예상 회신 시간을 이곳에 표시합니다.
           </p>
           <button className="button button-secondary" type="button" onClick={() => setSubmitted(false)}>
             폼 다시 보기
@@ -55,13 +52,6 @@ export function ContactForm() {
           <h2>기본 정보</h2>
         </div>
         <div className="field-grid">
-          <div className="field full">
-            <label htmlFor="inquiry-type">문의 유형 <span className="required">*</span></label>
-            <select id="inquiry-type" value={type} onChange={(event) => setType(event.target.value)}>
-              <option value="consult">도입 상담</option>
-              <option value="quote">기업 견적 요청</option>
-            </select>
-          </div>
           <div className="field">
             <label htmlFor="company">회사명 <span className="required">*</span></label>
             <input id="company" name="company" placeholder="회사명을 입력하세요" required />
@@ -137,12 +127,47 @@ export function ContactForm() {
         </div>
       </section>
 
+      <details className="optional-fields">
+        <summary>선택 정보 추가</summary>
+        <div className="field-grid">
+          <div className="field">
+            <label htmlFor="budget">예상 월 예산</label>
+            <select id="budget" name="budget" defaultValue="undecided">
+              <option value="undecided">미정</option>
+              <option>100만원 미만</option>
+              <option>100만–499만원</option>
+              <option>500만–999만원</option>
+              <option>1,000만원 이상</option>
+            </select>
+          </div>
+          <div className="field">
+            <label htmlFor="integration">API 연동 필요 여부</label>
+            <select id="integration" name="integration" defaultValue="undecided">
+              <option value="undecided">미정</option>
+              <option>필요</option>
+              <option>불필요</option>
+              <option>상담 후 결정</option>
+            </select>
+          </div>
+          <div className="field full">
+            <label htmlFor="timeline">도입 희망 시기</label>
+            <select id="timeline" name="timeline" defaultValue="undecided">
+              <option value="undecided">미정</option>
+              <option>즉시</option>
+              <option>1개월 이내</option>
+              <option>3개월 이내</option>
+              <option>장기 검토</option>
+            </select>
+          </div>
+        </div>
+      </details>
+
       <label className="agreement">
         <input type="checkbox" required />
         <span>[필수] 상담을 위한 개인정보 수집·이용에 동의합니다. 실제 동의 문구와 보유기간은 추후 입력합니다.</span>
       </label>
       <button className="submit-button" type="submit">
-        {type === "quote" ? "견적 요청 화면 완료하기" : "상담 신청 화면 완료하기"} ↗
+        문의하기 ↗
       </button>
     </form>
   );

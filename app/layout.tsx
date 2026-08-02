@@ -25,27 +25,27 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "%s | AI VIDEO SUPPLY",
     },
     description:
-      "기업을 위한 Kling·Seedance AI 영상 생성 인프라 도입 프로토타입",
+      "Kling·Seedance 국내 공식 총판의 기업용 크레딧 공급 및 국내 계약 안내",
     openGraph: {
-      title: "AI VIDEO SUPPLY",
-      description: "KLING · SEEDANCE B2B PROTOTYPE",
+      title: "국내 공식 총판 | AI VIDEO SUPPLY",
+      description: "기업용 크레딧을 기준가 대비 최대 30% 할인된 금액으로",
       url: origin,
       siteName: "AI VIDEO SUPPLY",
       type: "website",
       images: [
         {
-          url: `${origin}/og-dark.png`,
+          url: `${origin}/og-official-distributor.png`,
           width: 1200,
           height: 630,
-          alt: "AI VIDEO SUPPLY — KLING · SEEDANCE B2B PROTOTYPE",
+          alt: "AI VIDEO SUPPLY — 국내 공식 총판, 기업용 크레딧 최대 30% 할인",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "AI VIDEO SUPPLY",
-      description: "KLING · SEEDANCE B2B PROTOTYPE",
-      images: [`${origin}/og-dark.png`],
+      title: "국내 공식 총판 | AI VIDEO SUPPLY",
+      description: "기업용 크레딧을 기준가 대비 최대 30% 할인된 금액으로",
+      images: [`${origin}/og-official-distributor.png`],
     },
   };
 }

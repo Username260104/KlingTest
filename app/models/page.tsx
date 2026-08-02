@@ -36,7 +36,7 @@ const selections = [
   {
     index: "C",
     title: "아직 모델이 정해지지 않았을 때",
-    body: "월 생성량, 평균 길이, 사용 목적을 기준으로 두 모델을 함께 견적 요청합니다.",
+    body: "월 생성량, 평균 길이, 사용 목적을 기준으로 두 모델을 함께 비교 상담합니다.",
   },
 ];
 
@@ -96,8 +96,8 @@ export default function ModelsPage() {
             ))}
           </div>
           <div className="button-row">
-            <Link href="/contact?type=quote&model=both" className="button button-primary">
-              두 모델 견적 화면 보기 ↗
+            <Link href="/contact?model=both" className="button button-primary">
+              문의하기 ↗
             </Link>
           </div>
         </div>

@@ -23,11 +23,11 @@ async function render(pathname = "/") {
 }
 
 const routes = [
-  ["/", "글로벌 AI 영상 모델을"],
+  ["/", "국내 공식 총판"],
   ["/models", "모델 선택에 필요한 정보만"],
   ["/plans", "고정 가격표보다 사용 방식에 맞는 계약"],
-  ["/company", "무엇을 누구와 계약하는지"],
-  ["/contact", "필요한 모델과 사용량을 알려주세요"],
+  ["/company", "국내 계약과 공급을 책임지는 파트너"],
+  ["/contact", "필요한 사양과 계약 조건을 알려주세요"],
 ];
 
 for (const [pathname, expectedText] of routes) {
@@ -42,3 +42,16 @@ for (const [pathname, expectedText] of routes) {
     assert.doesNotMatch(html, /codex-preview/);
   });
 }
+
+test("primary navigation and inquiry copy are simplified", async () => {
+  const response = await render("/");
+  const html = await response.text();
+
+  assert.match(html, /홈/);
+  assert.match(html, /회사·파트너/);
+  assert.match(html, /문의하기/);
+  assert.doesNotMatch(html, /지원 모델/);
+  assert.doesNotMatch(html, /계약·도입/);
+  assert.doesNotMatch(html, /기업 견적 요청/);
+  assert.doesNotMatch(html, /Kling and Seedance/);
+});
