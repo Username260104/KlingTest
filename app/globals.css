@@ -2386,12 +2386,12 @@ body {
 .official-hero h1 {
   margin: 0;
   color: var(--color-text-1);
-  font-size: clamp(74px, 11vw, 154px);
+  font-size: clamp(48px, 7.2vw, 112px);
   font-weight: 650;
-  letter-spacing: -0.085em;
-  line-height: 0.92;
+  letter-spacing: -0.075em;
+  line-height: 0.98;
   text-shadow: 0 14px 60px rgb(0 0 0 / 46%);
-  word-break: keep-all;
+  white-space: nowrap;
 }
 
 .official-hero-subtitle {
@@ -2905,7 +2905,8 @@ body {
   }
 
   .official-hero h1 {
-    font-size: clamp(50px, 17vw, 74px);
+    font-size: clamp(27px, 8.5vw, 56px);
+    letter-spacing: -0.065em;
     line-height: 0.98;
   }
 

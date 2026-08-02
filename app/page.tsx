@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "국내 공식 총판",
+  title: "Kling 국내 공식 총판",
   description:
     "기업용 AI 영상 생성 크레딧을 국내 계약과 원화 결제로 공급합니다.",
 };
@@ -48,16 +48,14 @@ export default function Home() {
       <section className="official-hero" aria-labelledby="official-hero-title">
         <div className="official-hero-content">
           <p className="official-hero-label">ENTRESOL · KOREA</p>
-          <h1 id="official-hero-title">국내 공식 총판</h1>
+          <h1 id="official-hero-title">Kling 국내 공식 총판</h1>
           <p className="official-hero-subtitle">
-            기업용 크레딧을 기준가 대비 <strong>최대 30%</strong> 할인된 금액으로
+            클링 크레딧, API를 합리적인 가격으로
           </p>
           <Link href="/contact" className="official-inquiry-button">
             문의하기 <span aria-hidden="true">↗</span>
           </Link>
-          <p className="official-hero-note">
-            적용 모델, 사용량과 계약 조건에 따라 할인 범위가 달라질 수 있습니다.
-          </p>
+          <p className="official-hero-note">기업별 사용량과 계약 조건에 맞춰 공급합니다.</p>
         </div>
       </section>
 

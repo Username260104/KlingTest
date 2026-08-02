@@ -23,7 +23,7 @@ async function render(pathname = "/") {
 }
 
 const routes = [
-  ["/", "국내 공식 총판"],
+  ["/", "Kling 국내 공식 총판"],
   ["/models", "모델 선택에 필요한 정보만"],
   ["/plans", "고정 가격표보다 사용 방식에 맞는 계약"],
   ["/company", "국내 계약과 공급을 책임지는 파트너"],

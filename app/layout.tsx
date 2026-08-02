@@ -25,27 +25,27 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "%s | Entresol",
     },
     description:
-      "Kling·Seedance 국내 공식 총판의 기업용 크레딧 공급 및 국내 계약 안내",
+      "Kling 국내 공식 총판 Entresol의 클링 크레딧·API 공급 및 국내 계약 안내",
     openGraph: {
-      title: "국내 공식 총판 | Entresol",
-      description: "기업용 크레딧을 기준가 대비 최대 30% 할인된 금액으로",
+      title: "Kling 국내 공식 총판 | Entresol",
+      description: "클링 크레딧, API를 합리적인 가격으로",
       url: origin,
       siteName: "Entresol",
       type: "website",
       images: [
         {
-          url: `${origin}/og-entresol.png`,
+          url: `${origin}/og-entresol-kling.png`,
           width: 1200,
           height: 630,
-          alt: "Entresol — 국내 공식 총판, 기업용 크레딧 최대 30% 할인",
+          alt: "Entresol — Kling 국내 공식 총판, 클링 크레딧과 API 공급",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "국내 공식 총판 | Entresol",
-      description: "기업용 크레딧을 기준가 대비 최대 30% 할인된 금액으로",
-      images: [`${origin}/og-entresol.png`],
+      title: "Kling 국내 공식 총판 | Entresol",
+      description: "클링 크레딧, API를 합리적인 가격으로",
+      images: [`${origin}/og-entresol-kling.png`],
     },
   };
 }
