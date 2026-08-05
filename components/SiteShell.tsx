@@ -1,14 +1,9 @@
 import Link from "next/link";
 
-const navigation = [
-  { label: "홈", href: "/" },
-  { label: "공식 총판 안내", href: "/company" },
-];
-
 export function SiteHeader() {
   return (
     <header className="site-header">
-      <div className="page-shell header-inner">
+      <div className="page-shell header-inner landing-header">
         <Link href="/" className="brand" aria-label="Entresol 홈">
           <span className="brand-mark" aria-hidden="true">
             <span />
@@ -18,29 +13,9 @@ export function SiteHeader() {
           <span>Entresol</span>
         </Link>
 
-        <nav className="desktop-nav" aria-label="주요 메뉴">
-          {navigation.map((item) => (
-            <Link href={item.href} key={item.href}>
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
         <Link href="/contact" className="header-cta">
-          크레딧 공급 문의 <span aria-hidden="true">↗</span>
+          문의하기 <span aria-hidden="true">↗</span>
         </Link>
-
-        <details className="mobile-menu">
-          <summary aria-label="메뉴 열기">MENU</summary>
-          <nav aria-label="모바일 메뉴">
-            {navigation.map((item) => (
-              <Link href={item.href} key={item.href}>
-                {item.label}
-              </Link>
-            ))}
-            <Link href="/contact">크레딧 공급 문의 ↗</Link>
-          </nav>
-        </details>
       </div>
     </header>
   );
@@ -62,14 +37,6 @@ export function SiteFooter() {
           <p>Kling 국내 공식 총판 · 기업 고객 대상 크레딧 공급</p>
         </div>
         <div>
-          <span className="footer-label">PAGES</span>
-          {navigation.map((item) => (
-            <Link href={item.href} key={item.href}>
-              {item.label}
-            </Link>
-          ))}
-        </div>
-        <div>
           <span className="footer-label">CONTACT</span>
           <Link href="/contact">크레딧 공급 문의</Link>
         </div>
@@ -89,11 +56,13 @@ export function SiteFooter() {
 }
 
 export function SectionHeading({
+  id,
   eyebrow,
   title,
   description,
   action,
 }: {
+  id?: string;
   eyebrow: string;
   title: string;
   description?: string;
@@ -103,7 +72,7 @@ export function SectionHeading({
     <div className="section-heading">
       <div>
         <span className="eyebrow">{eyebrow}</span>
-        <h2>{title}</h2>
+        <h2 id={id}>{title}</h2>
         {description && <p>{description}</p>}
       </div>
       {action && (

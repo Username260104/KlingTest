@@ -117,6 +117,10 @@ textarea {
   gap: 28px;
 }
 
+.header-inner.landing-header {
+  grid-template-columns: 1fr auto;
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -1147,7 +1151,7 @@ textarea {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.7fr 0.8fr 1fr 1.1fr;
+  grid-template-columns: 1.7fr 0.8fr 1.1fr;
   gap: 50px;
 }
 
@@ -1195,8 +1199,7 @@ textarea {
     grid-template-columns: 1fr auto;
   }
 
-  .desktop-nav,
-  .header-cta {
+  .desktop-nav {
     display: none;
   }
 
@@ -2687,7 +2690,8 @@ body {
   margin: 0;
 }
 
-.company-official-hero h1 {
+.company-official-hero h1,
+.company-official-hero h2 {
   max-width: 980px;
   margin: 18px 0 0;
   color: var(--color-text-1);
@@ -2974,7 +2978,8 @@ body {
     padding-block: 78px 70px;
   }
 
-  .company-official-hero h1 {
+  .company-official-hero h1,
+  .company-official-hero h2 {
     font-size: 52px;
   }
 
@@ -2995,5 +3000,36 @@ body {
 
   .company-scope-grid {
     margin-top: 36px;
+  }
+}
+
+.landing-anchor-section {
+  scroll-margin-top: 76px;
+}
+
+.landing-section-band {
+  border-inline: 0;
+}
+
+.landing-checklist {
+  margin-top: 52px;
+}
+
+.footer-grid > div:last-child {
+  grid-column: auto;
+}
+
+@media (max-width: 720px) {
+  .landing-anchor-section {
+    scroll-margin-top: 64px;
+  }
+
+  .landing-checklist {
+    margin-top: 36px;
+  }
+
+  .landing-header .header-cta {
+    min-height: 40px;
+    padding-inline: 14px;
   }
 }
