@@ -140,7 +140,15 @@ const scopes = [
 export default function Home() {
   return (
     <>
-      <section className="official-hero" aria-labelledby="official-hero-title">
+      <section
+        className="official-hero"
+        aria-labelledby="official-hero-title"
+        data-hero-version="forest-v3"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle at 50% 44%, rgb(116 255 82 / 8%), transparent 32rem), linear-gradient(180deg, rgb(4 5 5 / 24%) 0%, rgb(4 5 5 / 42%) 56%, rgb(4 5 5 / 76%) 100%), url("/hero-forest-photo-v3.jpg")',
+        }}
+      >
         <div className="official-hero-content">
           <p className="official-hero-label">ENTRESOL · KOREA</p>
           <h1 id="official-hero-title">Kling 국내 공식 총판</h1>

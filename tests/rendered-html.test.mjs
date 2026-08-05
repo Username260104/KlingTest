@@ -63,6 +63,8 @@ test("the single landing page contains the full service and distributor content"
   assert.match(html, /id="credit-guide"/);
   assert.match(html, /id="supply-types"/);
   assert.match(html, /id="official-distributor"/);
+  assert.match(html, /data-hero-version="forest-v3"/);
+  assert.match(html, /hero-forest-photo-v3\.jpg/);
   assert.match(html, /필요한 크레딧 규모를 확인하는 기준/);
   assert.match(html, /기업의 네 가지 사용 상황/);
   assert.match(html, /Kling 본사 직접 계약/);
