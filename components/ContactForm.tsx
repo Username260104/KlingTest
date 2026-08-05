@@ -1,9 +1,17 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 export function ContactForm() {
+  const searchParams = useSearchParams();
   const [submitted, setSubmitted] = useState(false);
+  const [usage, setUsage] = useState(() => {
+    const nextUsage = searchParams.get("use");
+    return ["test", "project", "recurring", "large"].includes(nextUsage ?? "")
+      ? nextUsage ?? "undecided"
+      : "undecided";
+  });
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -71,13 +79,19 @@ export function ContactForm() {
             />
           </div>
           <div className="field">
-            <label htmlFor="timeline">구매 희망 시기</label>
-            <select id="timeline" name="timeline" defaultValue="undecided">
+            <label htmlFor="usage">사용 상황 <span className="required">*</span></label>
+            <select
+              id="usage"
+              name="usage"
+              value={usage}
+              onChange={(event) => setUsage(event.target.value)}
+              required
+            >
               <option value="undecided">미정</option>
-              <option>즉시</option>
-              <option>1개월 이내</option>
-              <option>3개월 이내</option>
-              <option>장기 검토</option>
+              <option value="test">초기 테스트</option>
+              <option value="project">프로젝트 사용</option>
+              <option value="recurring">정기적 사용</option>
+              <option value="large">대량 사용</option>
             </select>
           </div>
           <div className="field">
@@ -92,6 +106,28 @@ export function ContactForm() {
               <option>기타 기업용 영상 제작</option>
             </select>
           </div>
+          <div className="field">
+            <label htmlFor="volume">예상 월 생성량 <span className="required">*</span></label>
+            <select id="volume" name="volume" required defaultValue="">
+              <option value="" disabled>선택하세요</option>
+              <option>테스트 단계</option>
+              <option>100건 미만</option>
+              <option>100–499건</option>
+              <option>500–1,999건</option>
+              <option>2,000건 이상</option>
+              <option>미정</option>
+            </select>
+          </div>
+          <div className="field full">
+            <label htmlFor="timeline">구매 희망 시기</label>
+            <select id="timeline" name="timeline" defaultValue="undecided">
+              <option value="undecided">미정</option>
+              <option>즉시</option>
+              <option>1개월 이내</option>
+              <option>3개월 이내</option>
+              <option>장기 검토</option>
+            </select>
+          </div>
           <div className="field full">
             <label htmlFor="message">문의 내용 <span className="required">*</span></label>
             <textarea
@@ -103,6 +139,22 @@ export function ContactForm() {
           </div>
         </div>
       </section>
+
+      <details className="optional-fields">
+        <summary>선택 정보 추가</summary>
+        <div className="field-grid">
+          <div className="field full">
+            <label htmlFor="budget">예상 구매 예산</label>
+            <select id="budget" name="budget" defaultValue="undecided">
+              <option value="undecided">미정</option>
+              <option>100만원 미만</option>
+              <option>100만–499만원</option>
+              <option>500만–999만원</option>
+              <option>1,000만원 이상</option>
+            </select>
+          </div>
+        </div>
+      </details>
 
       <label className="agreement">
         <input type="checkbox" required />

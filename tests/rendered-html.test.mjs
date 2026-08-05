@@ -24,6 +24,8 @@ async function render(pathname = "/") {
 
 const routes = [
   ["/", "Kling 국내 공식 총판"],
+  ["/models", "필요한 크레딧 규모를 확인하는 기준"],
+  ["/plans", "사용 계획에 맞는 Kling 크레딧 공급"],
   ["/company", "Kling 본사와 직접 계약한 국내 공식 총판"],
   ["/contact", "Kling 크레딧 공급을 문의하세요"],
 ];
@@ -50,8 +52,8 @@ test("primary navigation and inquiry copy match the confirmed service scope", as
   assert.match(html, /크레딧 공급 문의/);
   assert.match(html, /Kling 본사 직접 계약/);
   assert.match(html, /기업 고객 대상/);
-  assert.doesNotMatch(html, /지원 모델/);
-  assert.doesNotMatch(html, /계약·도입/);
+  assert.match(html, /크레딧 수량 안내/);
+  assert.match(html, /공급 방식 보기/);
   assert.doesNotMatch(html, /기업 견적 요청/);
 });
 
@@ -59,20 +61,9 @@ test("public pages do not expose services outside the confirmed scope", async ()
   const forbiddenCopy =
     /Seedance|API·크레딧|API 연동|API 사용권|한·중 합작법인|원화 결제|세금계산서|기술지원|원하는 사양|월 사용량 계약/;
 
-  for (const pathname of ["/", "/company", "/contact"]) {
+  for (const pathname of ["/", "/models", "/plans", "/company", "/contact"]) {
     const response = await render(pathname);
     const html = await response.text();
     assert.doesNotMatch(html, forbiddenCopy, `${pathname} contains out-of-scope copy`);
   }
 });
-
-for (const [pathname, destination] of [
-  ["/models", "/"],
-  ["/plans", "/contact"],
-]) {
-  test(`${pathname} redirects to ${destination}`, async () => {
-    const response = await render(pathname);
-    assert.ok([307, 308].includes(response.status));
-    assert.equal(new URL(response.headers.get("location")).pathname, destination);
-  });
-}

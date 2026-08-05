@@ -7,18 +7,18 @@ export const metadata: Metadata = {
     "Kling 본사와 직접 계약한 국내 공식 총판이 기업 고객에게 Kling 크레딧을 경쟁력 있는 가격으로 공급합니다.",
 };
 
-const directContractTags = [
-  "국내 공식 총판",
-  "Kling 본사 직접 계약",
-  "Kling 크레딧 공급",
-  "기업 고객 대상",
+const usageTags = [
+  "예상 생성량",
+  "영상 길이·해상도",
+  "사용 목적",
+  "필요 크레딧 수량",
 ];
 
-const pricingTags = [
-  "예상 수량 확인",
-  "기업 공급가",
-  "필요 시기 확인",
-  "문의 후 안내",
+const supplyTags = [
+  "초기 테스트",
+  "프로젝트 사용",
+  "정기적 사용",
+  "대량 사용 문의",
 ];
 
 const trustItems = [
@@ -64,26 +64,26 @@ export default function Home() {
       <section className="supply-section page-shell" aria-labelledby="supply-title">
         <div className="simplified-heading">
           <span>FLEXIBLE SUPPLY</span>
-          <h2 id="supply-title">기업 고객을 위한 Kling 크레딧 공급</h2>
+          <h2 id="supply-title">기업의 사용 계획에 맞춰 공급합니다</h2>
           <p>
-            Kling 본사와의 직접 계약을 기반으로 필요한 크레딧 수량을 확인하고
-            기업 고객에게 적용되는 공급가를 안내합니다.
+            예상 사용량과 제작 계획, 구매 시기를 확인한 뒤 필요한 크레딧 규모와
+            기업 고객 대상 공급가를 안내합니다.
           </p>
         </div>
 
         <div className="supply-option-grid">
           <article className="supply-option-card">
             <div className="supply-card-top">
-              <span>01 / DIRECT CONTRACT</span>
+              <span>01 / CREDIT VOLUME</span>
               <b aria-hidden="true">↗</b>
             </div>
-            <h3>Kling 본사 직접 계약</h3>
+            <h3>필요한 크레딧 규모</h3>
             <p>
-              Kling 본사와 직접 체결한 계약을 기반으로 기업 고객에게
-              Kling 크레딧을 공급합니다.
+              예상 생성량과 평균 영상 조건, 사용 목적을 확인해 문의에 필요한
+              크레딧 수량을 구체화합니다.
             </p>
             <ul>
-              {directContractTags.map((tag) => (
+              {usageTags.map((tag) => (
                 <li key={tag}>{tag}</li>
               ))}
             </ul>
@@ -91,20 +91,28 @@ export default function Home() {
 
           <article className="supply-option-card supply-option-accent">
             <div className="supply-card-top">
-              <span>02 / B2B PRICING</span>
+              <span>02 / SUPPLY TYPE</span>
               <b aria-hidden="true">↗</b>
             </div>
-            <h3>기업 공급가 안내</h3>
+            <h3>기업별 공급 방식</h3>
             <p>
-              필요한 크레딧 수량과 구매 희망 시기를 확인한 뒤
-              기업 고객 대상 공급가를 안내합니다.
+              초기 테스트, 프로젝트 운영, 정기적 사용과 대량 사용 등 기업의
+              구매 목적과 수량에 맞춰 공급가를 안내합니다.
             </p>
             <ul>
-              {pricingTags.map((tag) => (
+              {supplyTags.map((tag) => (
                 <li key={tag}>{tag}</li>
               ))}
             </ul>
           </article>
+        </div>
+        <div className="button-row">
+          <Link href="/models" className="button button-secondary">
+            크레딧 수량 안내
+          </Link>
+          <Link href="/plans" className="button button-secondary">
+            공급 방식 보기
+          </Link>
         </div>
       </section>
 
@@ -132,8 +140,8 @@ export default function Home() {
       <section className="final-inquiry-section page-shell" aria-labelledby="final-inquiry-title">
         <div>
           <span>START A CONVERSATION</span>
-          <h2 id="final-inquiry-title">필요한 Kling 크레딧 수량을 알려주세요</h2>
-          <p>회사 정보와 예상 필요 수량을 확인한 뒤 기업 공급가를 안내합니다.</p>
+          <h2 id="final-inquiry-title">예상 사용량과 구매 계획을 알려주세요</h2>
+          <p>필요한 Kling 크레딧 규모와 기업 고객 대상 공급가를 안내합니다.</p>
         </div>
         <Link href="/contact" className="official-inquiry-button">
           크레딧 공급 문의 <span aria-hidden="true">↗</span>

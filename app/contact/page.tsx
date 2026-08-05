@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { ContactForm } from "../../components/ContactForm";
 import { PageIntro } from "../../components/SiteShell";
 
@@ -27,7 +28,9 @@ export default function ContactPage() {
           </p>
           <span className="prototype-badge">현재는 입력 흐름 확인용 프로토타입입니다</span>
         </aside>
-        <ContactForm />
+        <Suspense fallback={<div className="contact-form">폼을 준비하고 있습니다.</div>}>
+          <ContactForm />
+        </Suspense>
       </section>
     </>
   );
