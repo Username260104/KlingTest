@@ -2352,9 +2352,9 @@ body {
   overflow: hidden;
   padding: 96px 24px 72px;
   background-image:
-    radial-gradient(circle at 50% 44%, rgb(1 18 28 / 42%), transparent 34rem),
-    linear-gradient(180deg, rgb(2 18 26 / 32%) 0%, rgb(2 18 26 / 44%) 56%, rgb(2 18 26 / 58%) 100%),
-    url("/hero-coast-person-v4.jpg");
+    radial-gradient(circle at 50% 44%, rgb(1 18 28 / 30%), transparent 34rem),
+    linear-gradient(180deg, rgb(2 18 26 / 24%) 0%, rgb(2 18 26 / 32%) 56%, rgb(2 18 26 / 48%) 100%),
+    url("/hero-road-pov-v5.jpg");
   background-position: center 52%;
   background-size: cover;
 }
@@ -2857,7 +2857,7 @@ body {
 @media (max-width: 900px) {
   .official-hero {
     min-height: 760px;
-    background-position: 72% center;
+    background-position: 64% center;
   }
 
   .supply-option-grid,
@@ -2900,7 +2900,7 @@ body {
   .official-hero {
     min-height: calc(100svh - 64px);
     padding: 72px 20px 54px;
-    background-position: 72% center;
+    background-position: 64% center;
   }
 
   .official-hero-label {

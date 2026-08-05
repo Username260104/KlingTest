@@ -63,8 +63,8 @@ test("the single landing page contains the full service and distributor content"
   assert.match(html, /id="credit-guide"/);
   assert.match(html, /id="supply-types"/);
   assert.match(html, /id="official-distributor"/);
-  assert.match(html, /data-hero-version="coast-v4"/);
-  assert.match(html, /hero-coast-person-v4\.jpg/);
+  assert.match(html, /data-hero-version="road-v5"/);
+  assert.match(html, /hero-road-pov-v5\.jpg/);
   assert.match(html, /필요한 크레딧 규모를 확인하는 기준/);
   assert.match(html, /기업의 네 가지 사용 상황/);
   assert.match(html, /Kling 본사 직접 계약/);
@@ -91,9 +91,9 @@ test("public pages do not expose services outside the confirmed scope", async ()
 test("the hero uses the current photorealistic background asset", async () => {
   const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
   const asset = await stat(
-    new URL("../public/hero-coast-person-v4.jpg", import.meta.url),
+    new URL("../public/hero-road-pov-v5.jpg", import.meta.url),
   );
 
-  assert.match(css, /url\("\/hero-coast-person-v4\.jpg"\)/);
+  assert.match(css, /url\("\/hero-road-pov-v5\.jpg"\)/);
   assert.ok(asset.size > 100_000, "hero image should be a real production asset");
 });
