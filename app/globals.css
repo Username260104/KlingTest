@@ -2351,11 +2351,10 @@ body {
   place-items: center;
   overflow: hidden;
   padding: 96px 24px 72px;
-  /* Temporary licensed nature asset. Replace with an approved brand visual. */
   background-image:
     radial-gradient(circle at 50% 44%, rgb(116 255 82 / 13%), transparent 32rem),
     linear-gradient(180deg, rgb(4 5 5 / 28%) 0%, rgb(4 5 5 / 50%) 56%, rgb(4 5 5 / 88%) 100%),
-    url("/hero-nature-mountains.jpg");
+    url("/hero-mountain-photo-v2.jpg");
   background-position: center 52%;
   background-size: cover;
 }
