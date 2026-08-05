@@ -24,10 +24,8 @@ async function render(pathname = "/") {
 
 const routes = [
   ["/", "Kling 국내 공식 총판"],
-  ["/models", "모델 선택에 필요한 정보만"],
-  ["/plans", "고정 가격표보다 사용 방식에 맞는 계약"],
-  ["/company", "국내 계약과 공급을 책임지는 파트너"],
-  ["/contact", "필요한 사양과 계약 조건을 알려주세요"],
+  ["/company", "Kling 본사와 직접 계약한 국내 공식 총판"],
+  ["/contact", "Kling 크레딧 공급을 문의하세요"],
 ];
 
 for (const [pathname, expectedText] of routes) {
@@ -43,15 +41,38 @@ for (const [pathname, expectedText] of routes) {
   });
 }
 
-test("primary navigation and inquiry copy are simplified", async () => {
+test("primary navigation and inquiry copy match the confirmed service scope", async () => {
   const response = await render("/");
   const html = await response.text();
 
   assert.match(html, /홈/);
-  assert.match(html, /회사·파트너/);
-  assert.match(html, /문의하기/);
+  assert.match(html, /공식 총판 안내/);
+  assert.match(html, /크레딧 공급 문의/);
+  assert.match(html, /Kling 본사 직접 계약/);
+  assert.match(html, /기업 고객 대상/);
   assert.doesNotMatch(html, /지원 모델/);
   assert.doesNotMatch(html, /계약·도입/);
   assert.doesNotMatch(html, /기업 견적 요청/);
-  assert.doesNotMatch(html, /Kling and Seedance/);
 });
+
+test("public pages do not expose services outside the confirmed scope", async () => {
+  const forbiddenCopy =
+    /Seedance|API·크레딧|API 연동|API 사용권|한·중 합작법인|원화 결제|세금계산서|기술지원|원하는 사양|월 사용량 계약/;
+
+  for (const pathname of ["/", "/company", "/contact"]) {
+    const response = await render(pathname);
+    const html = await response.text();
+    assert.doesNotMatch(html, forbiddenCopy, `${pathname} contains out-of-scope copy`);
+  }
+});
+
+for (const [pathname, destination] of [
+  ["/models", "/"],
+  ["/plans", "/contact"],
+]) {
+  test(`${pathname} redirects to ${destination}`, async () => {
+    const response = await render(pathname);
+    assert.ok([307, 308].includes(response.status));
+    assert.equal(new URL(response.headers.get("location")).pathname, destination);
+  });
+}

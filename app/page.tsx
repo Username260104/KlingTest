@@ -4,41 +4,41 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Kling 국내 공식 총판",
   description:
-    "기업용 AI 영상 생성 크레딧을 국내 계약과 원화 결제로 공급합니다.",
+    "Kling 본사와 직접 계약한 국내 공식 총판이 기업 고객에게 Kling 크레딧을 경쟁력 있는 가격으로 공급합니다.",
 };
 
-const specificationTags = [
-  "Kling·Seedance 선택",
-  "프로젝트별 생성량",
-  "API·크레딧 공급",
-  "기술지원 범위",
+const directContractTags = [
+  "국내 공식 총판",
+  "Kling 본사 직접 계약",
+  "Kling 크레딧 공급",
+  "기업 고객 대상",
 ];
 
-const contractTags = [
-  "선불 크레딧",
-  "프로젝트 계약",
-  "월 사용량 계약",
-  "기업별 맞춤 계약",
+const pricingTags = [
+  "예상 수량 확인",
+  "기업 공급가",
+  "필요 시기 확인",
+  "문의 후 안내",
 ];
 
 const trustItems = [
   {
     index: "01",
-    label: "JOINT VENTURE",
-    title: "한·중 합작법인",
-    body: "중국 현지 공급 네트워크와 국내 기업 거래 구조를 함께 운영합니다.",
+    label: "OFFICIAL DISTRIBUTOR",
+    title: "Kling 국내 공식 총판",
+    body: "Kling의 국내 공식 총판으로서 기업 고객에게 크레딧을 공급합니다.",
   },
   {
     index: "02",
-    label: "LOCAL CONTRACT",
-    title: "국내 계약·원화 결제",
-    body: "해외 결제 절차 없이 국내 법인과 계약하고 원화로 정산합니다.",
+    label: "DIRECT CONTRACT",
+    title: "Kling 본사 직접 계약",
+    body: "Kling 본사와 직접 체결한 계약을 기반으로 공급합니다.",
   },
   {
     index: "03",
-    label: "TAX INVOICE",
-    title: "세금계산서 발행 가능",
-    body: "국내 기업 회계 처리에 필요한 세금계산서를 발행합니다.",
+    label: "B2B CREDIT SUPPLY",
+    title: "기업 고객 대상 공급",
+    body: "필요한 크레딧 수량을 확인한 뒤 기업 공급가를 안내합니다.",
   },
 ];
 
@@ -50,38 +50,40 @@ export default function Home() {
           <p className="official-hero-label">ENTRESOL · KOREA</p>
           <h1 id="official-hero-title">Kling 국내 공식 총판</h1>
           <p className="official-hero-subtitle">
-            클링 크레딧, API를 합리적인 가격으로
+            기업 고객을 위한 Kling 크레딧을 경쟁력 있는 가격으로
           </p>
           <Link href="/contact" className="official-inquiry-button">
-            문의하기 <span aria-hidden="true">↗</span>
+            크레딧 공급 문의 <span aria-hidden="true">↗</span>
           </Link>
-          <p className="official-hero-note">기업별 사용량과 계약 조건에 맞춰 공급합니다.</p>
+          <p className="official-hero-note">
+            필요한 크레딧 수량을 알려주시면 기업 공급가를 안내합니다.
+          </p>
         </div>
       </section>
 
       <section className="supply-section page-shell" aria-labelledby="supply-title">
         <div className="simplified-heading">
           <span>FLEXIBLE SUPPLY</span>
-          <h2 id="supply-title">기업이 원하는 방식으로 공급합니다</h2>
+          <h2 id="supply-title">기업 고객을 위한 Kling 크레딧 공급</h2>
           <p>
-            정해진 상품에 맞추는 대신 필요한 영상 생성 환경과 실제 계약 구조를 기준으로
-            공급 조건을 구성합니다.
+            Kling 본사와의 직접 계약을 기반으로 필요한 크레딧 수량을 확인하고
+            기업 고객에게 적용되는 공급가를 안내합니다.
           </p>
         </div>
 
         <div className="supply-option-grid">
           <article className="supply-option-card">
             <div className="supply-card-top">
-              <span>01 / SPECIFICATION</span>
+              <span>01 / DIRECT CONTRACT</span>
               <b aria-hidden="true">↗</b>
             </div>
-            <h3>원하는 사양</h3>
+            <h3>Kling 본사 직접 계약</h3>
             <p>
-              필요한 모델, 생성량, 영상 규격과 API 연동 범위에 맞춰 공급 조건을
-              구성합니다.
+              Kling 본사와 직접 체결한 계약을 기반으로 기업 고객에게
+              Kling 크레딧을 공급합니다.
             </p>
             <ul>
-              {specificationTags.map((tag) => (
+              {directContractTags.map((tag) => (
                 <li key={tag}>{tag}</li>
               ))}
             </ul>
@@ -89,16 +91,16 @@ export default function Home() {
 
           <article className="supply-option-card supply-option-accent">
             <div className="supply-card-top">
-              <span>02 / CONTRACT</span>
+              <span>02 / B2B PRICING</span>
               <b aria-hidden="true">↗</b>
             </div>
-            <h3>원하는 계약 형태</h3>
+            <h3>기업 공급가 안내</h3>
             <p>
-              테스트 크레딧부터 프로젝트 계약, 월 사용량 계약과 대량 사용 협의까지
-              기업 상황에 맞춰 제안합니다.
+              필요한 크레딧 수량과 구매 희망 시기를 확인한 뒤
+              기업 고객 대상 공급가를 안내합니다.
             </p>
             <ul>
-              {contractTags.map((tag) => (
+              {pricingTags.map((tag) => (
                 <li key={tag}>{tag}</li>
               ))}
             </ul>
@@ -109,8 +111,8 @@ export default function Home() {
       <section className="business-trust-section" aria-labelledby="business-trust-title">
         <div className="page-shell">
           <div className="simplified-heading trust-heading">
-            <span>LOCAL BUSINESS READY</span>
-            <h2 id="business-trust-title">국내 기업 거래에 필요한 조건을 갖췄습니다</h2>
+            <span>VERIFIED SUPPLY RELATIONSHIP</span>
+            <h2 id="business-trust-title">확인된 공급 관계를 투명하게 안내합니다</h2>
           </div>
           <div className="business-trust-grid">
             {trustItems.map((item) => (
@@ -130,11 +132,11 @@ export default function Home() {
       <section className="final-inquiry-section page-shell" aria-labelledby="final-inquiry-title">
         <div>
           <span>START A CONVERSATION</span>
-          <h2 id="final-inquiry-title">필요한 사양과 계약 조건을 알려주세요</h2>
-          <p>예상 사용량과 활용 목적을 확인한 뒤 적합한 모델과 공급 조건을 제안합니다.</p>
+          <h2 id="final-inquiry-title">필요한 Kling 크레딧 수량을 알려주세요</h2>
+          <p>회사 정보와 예상 필요 수량을 확인한 뒤 기업 공급가를 안내합니다.</p>
         </div>
         <Link href="/contact" className="official-inquiry-button">
-          문의하기 <span aria-hidden="true">↗</span>
+          크레딧 공급 문의 <span aria-hidden="true">↗</span>
         </Link>
       </section>
     </>

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const navigation = [
   { label: "홈", href: "/" },
-  { label: "회사·파트너", href: "/company" },
+  { label: "공식 총판 안내", href: "/company" },
 ];
 
 export function SiteHeader() {
@@ -27,7 +27,7 @@ export function SiteHeader() {
         </nav>
 
         <Link href="/contact" className="header-cta">
-          문의하기 <span aria-hidden="true">↗</span>
+          크레딧 공급 문의 <span aria-hidden="true">↗</span>
         </Link>
 
         <details className="mobile-menu">
@@ -38,7 +38,7 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <Link href="/contact">문의하기 ↗</Link>
+            <Link href="/contact">크레딧 공급 문의 ↗</Link>
           </nav>
         </details>
       </div>
@@ -59,7 +59,7 @@ export function SiteFooter() {
             </span>
             <span>Entresol</span>
           </div>
-          <p>국내 공식 총판 · 기업용 크레딧 공급</p>
+          <p>Kling 국내 공식 총판 · 기업 고객 대상 크레딧 공급</p>
         </div>
         <div>
           <span className="footer-label">PAGES</span>
@@ -71,21 +71,18 @@ export function SiteFooter() {
         </div>
         <div>
           <span className="footer-label">CONTACT</span>
-          <Link href="/contact">문의하기</Link>
-          <span>[대표 이메일]</span>
-          <span>[대표 전화]</span>
-          <span>[회사 주소]</span>
+          <Link href="/contact">크레딧 공급 문의</Link>
         </div>
         <div>
-          <span className="footer-label">LEGAL</span>
-          <span>개인정보처리방침 · 후속</span>
-          <span>서비스 이용안내 · 후속</span>
-          <span>파트너 관계 문구 · 확정 필요</span>
+          <span className="footer-label">SERVICE</span>
+          <span>Kling 국내 공식 총판</span>
+          <span>Kling 본사 직접 계약</span>
+          <span>기업 고객 대상 크레딧 공급</span>
         </div>
       </div>
       <div className="page-shell footer-bottom">
-        <span>FRONTEND PROTOTYPE · 2026</span>
-        <span>회사명 및 사업자 정보 입력 필요</span>
+        <span>© 2026 ENTRESOL</span>
+        <span>KLING OFFICIAL DISTRIBUTOR · KOREA</span>
       </div>
     </footer>
   );
