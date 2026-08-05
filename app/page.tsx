@@ -143,10 +143,10 @@ export default function Home() {
       <section
         className="official-hero"
         aria-labelledby="official-hero-title"
-        data-hero-version="forest-v3"
+        data-hero-version="coast-v4"
         style={{
           backgroundImage:
-            'radial-gradient(circle at 50% 44%, rgb(116 255 82 / 8%), transparent 32rem), linear-gradient(180deg, rgb(4 5 5 / 24%) 0%, rgb(4 5 5 / 42%) 56%, rgb(4 5 5 / 76%) 100%), url("/hero-forest-photo-v3.jpg")',
+            'radial-gradient(circle at 50% 44%, rgb(1 18 28 / 42%), transparent 34rem), linear-gradient(180deg, rgb(2 18 26 / 32%) 0%, rgb(2 18 26 / 44%) 56%, rgb(2 18 26 / 58%) 100%), url("/hero-coast-person-v4.jpg")',
         }}
       >
         <div className="official-hero-content">
