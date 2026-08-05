@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 async function render(pathname = "/") {
@@ -83,4 +84,14 @@ test("public pages do not expose services outside the confirmed scope", async ()
     const html = await response.text();
     assert.doesNotMatch(html, forbiddenCopy, `${pathname} contains out-of-scope copy`);
   }
+});
+
+test("the hero uses the current photorealistic background asset", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const asset = await stat(
+    new URL("../public/hero-forest-photo-v3.jpg", import.meta.url),
+  );
+
+  assert.match(css, /url\("\/hero-forest-photo-v3\.jpg"\)/);
+  assert.ok(asset.size > 100_000, "hero image should be a real production asset");
 });
