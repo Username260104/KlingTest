@@ -2439,14 +2439,6 @@ body {
     0 18px 46px rgb(41 204 73 / 30%);
 }
 
-.official-hero-note {
-  margin: 18px 0 0;
-  color: rgb(249 251 252 / 62%);
-  font-size: 11px;
-  line-height: 1.55;
-  word-break: keep-all;
-}
-
 .supply-section,
 .company-disclosure-section {
   padding-block: 128px;

@@ -81,7 +81,6 @@ export default function Home() {
           <Link href="/contact" className="official-inquiry-button">
             문의하기 <span aria-hidden="true">↗</span>
           </Link>
-          <p className="official-hero-note">필요한 크레딧 수량을 아직 몰라도 괜찮습니다.</p>
         </div>
       </section>
 
