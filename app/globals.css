@@ -2,11 +2,13 @@
 
 :root {
   color-scheme: dark;
+  --color-canvas: #000;
   --color-bg-page: #0a0a0a;
   --color-bg-primary: #111214;
   --color-bg-secondary: #1a1c1f;
   --color-bg-tertiary: #1f2124;
   --color-bg-popover: #2d2f33;
+  --color-border-frame: #1a1b1f;
   --color-border-container: #242629;
   --color-border-component: #3a3c3d;
   --color-border-hover: #76787a;
@@ -18,9 +20,16 @@
   --color-theme-2: #74ff52;
   --color-theme-hover: #9fff75;
   --color-theme-soft: #74ff521f;
+  --color-overlay-subtle: #ffffff14;
+  --color-overlay-hover: #ffffff1f;
   --color-fill-error: #f04b22;
   --color-fill-link: #5cbeff;
   --color-gradient-button: linear-gradient(
+    148deg,
+    #d3e2f0 0%,
+    #fff 100%
+  );
+  --color-gradient-button-green: linear-gradient(
     90deg,
     #29cc49 0%,
     #51e02d 24%,
@@ -1509,10 +1518,7 @@ textarea {
 /* -------------------------------------------------------------------------- */
 
 body {
-  background:
-    radial-gradient(circle at 82% 5%, rgb(116 255 82 / 7%), transparent 26rem),
-    radial-gradient(circle at 8% 34%, rgb(92 190 255 / 4%), transparent 28rem),
-    var(--color-bg-page);
+  background: var(--color-canvas);
 }
 
 :focus-visible {
@@ -1609,7 +1615,7 @@ body {
   color: #000;
   box-shadow:
     0.5px 0.5px 0.5px rgb(255 255 255 / 32%) inset,
-    0 6px 18px rgb(41 204 73 / 12%);
+    0 6px 18px rgb(0 0 0 / 24%);
   font-weight: 650;
 }
 
@@ -2254,7 +2260,7 @@ body {
 
 .site-footer {
   border-color: var(--color-border-container);
-  background: #070707;
+  background: var(--color-bg-primary);
   color: var(--color-text-1);
 }
 
@@ -2379,7 +2385,7 @@ body {
 
 .official-hero-label {
   margin: 0 0 22px;
-  color: var(--color-theme-2);
+  color: var(--color-text-2);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.18em;
@@ -2426,7 +2432,7 @@ body {
   color: #050805;
   box-shadow:
     0.5px 0.5px 0.5px rgb(255 255 255 / 42%) inset,
-    0 12px 36px rgb(41 204 73 / 22%);
+    0 12px 36px rgb(0 0 0 / 28%);
   font-size: 14px;
   font-weight: 700;
   transition: transform 160ms ease, box-shadow 160ms ease;
@@ -2436,7 +2442,7 @@ body {
   transform: translateY(-2px);
   box-shadow:
     0.5px 0.5px 0.5px rgb(255 255 255 / 42%) inset,
-    0 18px 46px rgb(41 204 73 / 30%);
+    0 18px 46px rgb(0 0 0 / 38%);
 }
 
 .supply-section,
@@ -3102,14 +3108,14 @@ body {
 }
 
 .b2b-button-primary {
-  border-color: var(--color-theme-2);
-  background: var(--color-theme-2);
-  color: #071006;
+  border-color: var(--color-text-1);
+  background: var(--color-text-1);
+  color: var(--color-bg-page);
 }
 
 .b2b-button-primary:hover {
-  border-color: var(--color-theme-hover);
-  background: var(--color-theme-hover);
+  border-color: var(--color-text-2);
+  background: var(--color-text-2);
 }
 
 .b2b-button-secondary {
@@ -3306,7 +3312,7 @@ body {
 .b2b-section-heading > p,
 .b2b-final > div > p {
   margin: 0;
-  color: var(--color-theme-2);
+  color: var(--color-text-3);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 10px;
   font-weight: 700;
@@ -3338,7 +3344,7 @@ body {
 .b2b-relationship,
 .b2b-guide {
   border-block: 1px solid var(--color-border-container);
-  background: #070807;
+  background: var(--color-bg-page);
 }
 
 .b2b-relationship-grid {
@@ -3376,7 +3382,7 @@ body {
 }
 
 .b2b-relationship-grid span {
-  color: var(--color-theme-2);
+  color: var(--color-text-2);
 }
 
 .b2b-relationship-grid h3 {
@@ -3416,7 +3422,7 @@ body {
 .b2b-use-grid article > span,
 .b2b-guide-grid article > span,
 .b2b-process-grid li > span {
-  color: var(--color-theme-2);
+  color: var(--color-text-2);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 10px;
   letter-spacing: 0.1em;
@@ -3454,7 +3460,7 @@ body {
 }
 
 .b2b-use-grid a span {
-  color: var(--color-theme-2);
+  color: var(--color-text-2);
 }
 
 .b2b-guide-grid {
@@ -3541,10 +3547,10 @@ body {
   gap: 60px;
   margin-block: 0 120px;
   padding: 52px;
-  border: 1px solid rgb(116 255 82 / 28%);
+  border: 1px solid var(--color-border-container);
   border-radius: 18px;
   background:
-    radial-gradient(circle at 86% 34%, rgb(116 255 82 / 14%), transparent 22rem),
+    radial-gradient(circle at 86% 34%, rgb(255 255 255 / 6%), transparent 22rem),
     linear-gradient(115deg, var(--color-bg-secondary), var(--color-bg-primary));
   box-shadow: var(--box-shadow-container);
 }
