@@ -92,6 +92,9 @@ test("the landing page follows the specified seven-part flow", async () => {
   assert.doesNotMatch(visibleHero, /official-hero-status/);
   assert.doesNotMatch(visibleHero, /필요한 크레딧 수량을 아직 몰라도 괜찮습니다/);
   assert.doesNotMatch(html, /공급가 문의하기/);
+  assert.doesNotMatch(html, /공급 주체는 HRC ENT이며, 기업 고객을 대상으로 합니다/);
+  assert.doesNotMatch(html, /가장 가까운 항목을 선택해 주세요/);
+  assert.doesNotMatch(html, /모든 항목을 정확히 알 필요는 없습니다/);
   assert.equal((visibleMain.match(/Kling 국내 공식 총판/g) ?? []).length, 1);
   assert.equal((visibleMain.match(/Kling 본사 직접 계약/g) ?? []).length, 1);
   assert.doesNotMatch(html, /기업의 사용 계획에 맞춰 공급합니다/);

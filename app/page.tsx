@@ -89,7 +89,6 @@ export default function Home() {
           <div className="b2b-section-heading b2b-section-heading-wide">
             <p>OFFICIAL SUPPLY</p>
             <h2 id="official-relationship-title">Kling 크레딧, 공식 경로로 공급합니다</h2>
-            <span>공급 주체는 HRC ENT이며, 기업 고객을 대상으로 합니다.</span>
           </div>
           <div className="b2b-relationship-grid">
             {relationshipItems.map((item) => (
@@ -106,7 +105,6 @@ export default function Home() {
         <div className="b2b-section-heading">
           <p>USE CASES</p>
           <h2 id="use-cases-title">어떤 방식으로 사용하실 예정인가요?</h2>
-          <span>가장 가까운 항목을 선택해 주세요. 세부 수량은 상담하면서 정할 수 있습니다.</span>
         </div>
         <div className="b2b-use-grid">
           {useCases.map((item) => (
@@ -125,7 +123,6 @@ export default function Home() {
           <div className="b2b-section-heading b2b-section-heading-wide">
             <p>INQUIRY GUIDE</p>
             <h2 id="inquiry-guide-title">이 정도만 알려주시면 됩니다</h2>
-            <span>모든 항목을 정확히 알 필요는 없습니다. 지금 확인되는 내용만 준비해 주세요.</span>
           </div>
           <div className="b2b-guide-grid">
             {guideItems.map((item) => (
