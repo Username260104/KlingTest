@@ -25,27 +25,27 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "%s | Entresol",
     },
     description:
-      "Kling 국내 공식 총판 Entresol이 본사 직접 계약을 기반으로 기업 고객에게 Kling 크레딧을 공급합니다.",
+      "기업의 사용 목적과 예상 규모를 확인해 필요한 Kling 크레딧과 기업 공급가, 공급 절차를 안내합니다.",
     openGraph: {
-      title: "Kling 국내 공식 총판 | Entresol",
-      description: "기업 고객 대상 Kling 크레딧을 경쟁력 있는 가격으로",
+      title: "기업용 Kling 크레딧 공급 | Entresol",
+      description: "정확한 크레딧 수량을 몰라도 시작할 수 있는 기업용 공급 문의",
       url: origin,
       siteName: "Entresol",
       type: "website",
       images: [
         {
-          url: `${origin}/og-entresol-kling.png`,
+          url: `${origin}/og-entresol-b2b.png`,
           width: 1200,
           height: 630,
-          alt: "Entresol — Kling 국내 공식 총판, 기업 고객 대상 Kling 크레딧 공급",
+          alt: "Entresol — 기업을 위한 Kling 크레딧 공급",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Kling 국내 공식 총판 | Entresol",
-      description: "기업 고객 대상 Kling 크레딧을 경쟁력 있는 가격으로",
-      images: [`${origin}/og-entresol-kling.png`],
+      title: "기업용 Kling 크레딧 공급 | Entresol",
+      description: "정확한 크레딧 수량을 몰라도 시작할 수 있는 기업용 공급 문의",
+      images: [`${origin}/og-entresol-b2b.png`],
     },
   };
 }

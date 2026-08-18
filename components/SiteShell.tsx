@@ -14,7 +14,7 @@ export function SiteHeader() {
         </Link>
 
         <Link href="/contact" className="header-cta">
-          문의하기 <span aria-hidden="true">↗</span>
+          기업 공급가 문의 <span aria-hidden="true">↗</span>
         </Link>
       </div>
     </header>
@@ -34,22 +34,20 @@ export function SiteFooter() {
             </span>
             <span>Entresol</span>
           </div>
-          <p>Kling 국내 공식 총판 · 기업 고객 대상 크레딧 공급</p>
+          <p>기업용 Kling 크레딧 공급 문의</p>
         </div>
         <div>
           <span className="footer-label">CONTACT</span>
-          <Link href="/contact">크레딧 공급 문의</Link>
+          <Link href="/contact">기업 공급가 문의</Link>
         </div>
         <div>
-          <span className="footer-label">SERVICE</span>
-          <span>Kling 국내 공식 총판</span>
-          <span>Kling 본사 직접 계약</span>
-          <span>기업 고객 대상 크레딧 공급</span>
+          <span className="footer-label">POLICY</span>
+          <span id="privacy-policy">개인정보처리방침 (준비 중)</span>
         </div>
       </div>
       <div className="page-shell footer-bottom">
         <span>© 2026 ENTRESOL</span>
-        <span>KLING OFFICIAL DISTRIBUTOR · KOREA</span>
+        <span>KLING FOR BUSINESS</span>
       </div>
     </footer>
   );
