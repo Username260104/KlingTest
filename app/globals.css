@@ -3760,3 +3760,28 @@ body {
     font-size: 39px;
   }
 }
+
+.b2b-road-hero h1 {
+  max-width: 1120px;
+  font-size: clamp(54px, 6.8vw, 104px);
+  white-space: normal;
+  word-break: keep-all;
+}
+
+.b2b-road-hero-lead {
+  max-width: 760px;
+  font-size: clamp(18px, 2vw, 27px);
+}
+
+@media (max-width: 720px) {
+  .b2b-road-hero h1 {
+    max-width: 350px;
+    font-size: clamp(38px, 11vw, 52px);
+    line-height: 1.01;
+  }
+
+  .b2b-road-hero-lead {
+    max-width: 340px;
+    font-size: 16px;
+  }
+}

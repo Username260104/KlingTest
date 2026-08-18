@@ -4,7 +4,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="page-shell header-inner landing-header">
-        <Link href="/" className="brand" aria-label="Entresol 홈">
+        <Link href="/" className="brand" aria-label="Entresol 홈으로 이동">
           <span className="brand-mark" aria-hidden="true">
             <span />
             <span />
@@ -34,7 +34,7 @@ export function SiteFooter() {
             </span>
             <span>Entresol</span>
           </div>
-          <p>기업용 Kling 크레딧 공급 문의</p>
+          <p>기업 고객을 위한 Kling 크레딧 공급 상담</p>
         </div>
         <div>
           <span className="footer-label">CONTACT</span>
@@ -42,7 +42,7 @@ export function SiteFooter() {
         </div>
         <div>
           <span className="footer-label">POLICY</span>
-          <span id="privacy-policy">개인정보처리방침 (준비 중)</span>
+          <span id="privacy-policy">개인정보처리방침 · 제공 예정</span>
         </div>
       </div>
       <div className="page-shell footer-bottom">

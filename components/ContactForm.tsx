@@ -1,9 +1,33 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, InvalidEvent, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 const validUsageValues = ["test", "project", "recurring", "large"];
+
+type FormControl = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+
+const requiredMessages: Record<string, string> = {
+  company: "회사명을 입력해 주세요.",
+  name: "담당자명을 입력해 주세요.",
+  email: "업무용 이메일을 입력해 주세요.",
+  inquiryType: "문의 유형을 선택해 주세요.",
+  message: "문의 내용을 입력해 주세요.",
+  privacyConsent: "개인정보 수집·이용 동의가 필요합니다.",
+};
+
+function handleInvalid(event: InvalidEvent<FormControl>) {
+  const field = event.currentTarget;
+  const message =
+    field.name === "email" && field.validity.typeMismatch
+      ? "업무용 이메일 형식을 확인해 주세요."
+      : requiredMessages[field.name] ?? "필수 항목을 확인해 주세요.";
+  field.setCustomValidity(message);
+}
+
+function clearValidation(event: FormEvent<FormControl>) {
+  event.currentTarget.setCustomValidity("");
+}
 
 export function ContactForm() {
   const searchParams = useSearchParams();
@@ -22,10 +46,10 @@ export function ContactForm() {
       <div className="form-success" role="status" aria-live="polite">
         <div>
           <div className="success-mark" aria-hidden="true">✓</div>
-          <h2>문의 입력 내용을 확인했습니다.</h2>
-          <p>프로토타입에서는 실제 문의가 전송되지 않습니다.</p>
+          <h2>입력 내용을 확인했습니다</h2>
+          <p>화면 검토용 프로토타입이므로 문의는 전송되지 않았습니다.</p>
           <button className="b2b-button b2b-button-secondary" type="button" onClick={() => setSubmitted(false)}>
-            폼 다시 보기
+            내용 수정하기
           </button>
         </div>
       </div>
@@ -37,38 +61,40 @@ export function ContactForm() {
       <section className="form-section">
         <div className="form-section-title">
           <span>01</span>
-          <h2>필수 정보</h2>
+          <h2>기본 정보</h2>
         </div>
         <div className="field-grid">
           <div className="field">
             <label htmlFor="company">회사명 <span className="required">*</span></label>
-            <input id="company" name="company" placeholder="회사명을 입력해 주세요." required />
+            <input id="company" name="company" placeholder="회사명을 입력해 주세요" required onInvalid={handleInvalid} onInput={clearValidation} />
           </div>
           <div className="field">
             <label htmlFor="name">담당자명 <span className="required">*</span></label>
-            <input id="name" name="name" placeholder="담당자 성함을 입력해 주세요." required />
+            <input id="name" name="name" placeholder="담당자명을 입력해 주세요" required onInvalid={handleInvalid} onInput={clearValidation} />
           </div>
           <div className="field">
             <label htmlFor="email">업무용 이메일 <span className="required">*</span></label>
-            <input id="email" name="email" type="email" placeholder="name@company.com" required />
+            <input id="email" name="email" type="email" placeholder="name@company.com" required onInvalid={handleInvalid} onInput={clearValidation} />
           </div>
           <div className="field">
             <label htmlFor="inquiryType">문의 유형 <span className="required">*</span></label>
-            <select id="inquiryType" name="inquiryType" defaultValue="" required>
-              <option value="" disabled>선택해 주세요.</option>
-              <option>크레딧 공급가·도입 상담</option>
-              <option>결제·기업 구매 서류</option>
-              <option>사업 협력</option>
-              <option>기타</option>
+            <select id="inquiryType" name="inquiryType" defaultValue="" required onInvalid={handleInvalid} onInput={clearValidation}>
+              <option value="" disabled>문의 유형을 선택해 주세요</option>
+              <option>크레딧 공급가 및 도입 상담</option>
+              <option>결제 및 기업 구매 서류</option>
+              <option>파트너십 및 사업 제휴</option>
+              <option>기타 문의</option>
             </select>
           </div>
           <div className="field full">
-            <label htmlFor="message">문의 내용 또는 사용 시나리오 <span className="required">*</span></label>
+            <label htmlFor="message">문의 내용 <span className="required">*</span></label>
             <textarea
               id="message"
               name="message"
-              placeholder="사용 목적, 주요 요구사항 또는 궁금한 내용을 알려주세요. 정확한 크레딧 수량은 몰라도 괜찮습니다."
+              placeholder="사용 목적과 궁금한 점을 알려주세요. 필요 수량은 미정이어도 됩니다."
               required
+              onInvalid={handleInvalid}
+              onInput={clearValidation}
             />
           </div>
         </div>
@@ -76,13 +102,13 @@ export function ContactForm() {
 
       <details className="optional-fields" open={hasPresetUsage || undefined}>
         <summary>
-          <span>선택 정보 추가</span>
-          <small>사용 상황·예상 규모·구매 시기 등</small>
+          <span>선택 정보</span>
+          <small>사용 규모·구매 일정</small>
         </summary>
         <div className="field-grid">
           <div className="field">
             <label htmlFor="contactId">연락처 또는 WeChat ID</label>
-            <input id="contactId" name="contactId" placeholder="연락 가능한 정보를 입력해 주세요." />
+            <input id="contactId" name="contactId" placeholder="전화번호 또는 WeChat ID" />
           </div>
           <div className="field">
             <label htmlFor="industry">업종</label>
@@ -103,7 +129,7 @@ export function ContactForm() {
             </select>
           </div>
           <div className="field">
-            <label htmlFor="purpose">필요 기능 또는 사용 목적</label>
+            <label htmlFor="purpose">주요 용도</label>
             <select id="purpose" name="purpose" defaultValue="undecided">
               <option value="undecided">미정</option>
               <option>영상 생성</option>
@@ -115,12 +141,12 @@ export function ContactForm() {
             </select>
           </div>
           <div className="field full">
-            <label htmlFor="experience">현재 Kling 사용 경험</label>
+            <label htmlFor="experience">Kling 사용 현황</label>
             <select id="experience" name="experience" defaultValue="not-used">
-              <option value="not-used">아직 사용해 보지 않음</option>
-              <option>웹사이트에서만 사용해 봄</option>
-              <option>API를 호출해 테스트해 봄</option>
-              <option>제품에 API를 통합해 사용 중</option>
+              <option value="not-used">사용 전</option>
+              <option>웹사이트에서 사용 중</option>
+              <option>API 테스트 경험 있음</option>
+              <option>API를 제품에 연동해 사용 중</option>
             </select>
           </div>
           <div className="field">
@@ -141,16 +167,16 @@ export function ContactForm() {
       </details>
 
       <label className="agreement">
-        <input type="checkbox" name="privacyConsent" required />
+        <input type="checkbox" name="privacyConsent" required onInvalid={handleInvalid} onInput={clearValidation} />
         <span>
           [필수] 상담을 위한 개인정보 수집·이용에 동의합니다.
-          <small> 실제 수집 항목·목적·보유기간은 확정 문구 제공 전까지 프로토타입 안내 상태입니다.</small>
+          <small> 정식 동의문은 문의 기능 적용 전에 제공됩니다.</small>
         </span>
       </label>
       <button className="submit-button" type="submit">
-        기업 공급가 문의하기 <span aria-hidden="true">↗</span>
+        입력 내용 확인 <span aria-hidden="true">↗</span>
       </button>
-      <p className="form-prototype-note">입력한 정보는 외부로 전송되거나 저장되지 않습니다.</p>
+      <p className="form-prototype-note">입력 내용은 전송하거나 저장하지 않습니다.</p>
     </form>
   );
 }
