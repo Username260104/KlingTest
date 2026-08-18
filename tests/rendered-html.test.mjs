@@ -24,7 +24,7 @@ async function render(pathname = "/") {
 }
 
 const routes = [
-  ["/", "기업을 위한 Kling 크레딧 공급"],
+  ["/", "Kling 국내 공식 총판"],
   ["/contact", "Kling 크레딧 공급 문의"],
 ];
 
@@ -59,7 +59,7 @@ test("the landing page follows the specified seven-part flow", async () => {
   const response = await render("/");
   const html = await response.text();
   const orderedCopy = [
-    "기업을 위한 Kling 크레딧 공급",
+    "Kling 국내 공식 총판",
     "Kling 크레딧, 공식 경로로 공급합니다",
     "어떤 방식으로 사용하실 예정인가요?",
     "이 정도만 알려주시면 됩니다",
@@ -88,6 +88,9 @@ test("the landing page follows the specified seven-part flow", async () => {
   const visibleMain = html.match(/<main>[\s\S]*?<\/main>/)?.[0] ?? "";
   const visibleHero = visibleMain.match(/<section[^>]+class="official-hero b2b-road-hero"[\s\S]*?<\/section>/)?.[0] ?? "";
   assert.match(visibleHero, /Kling 국내 공식 총판/);
+  assert.match(visibleHero, /기업 고객을 위한 Kling 크레딧 공급/);
+  assert.doesNotMatch(visibleHero, /official-hero-status/);
+  assert.doesNotMatch(html, /공급가 문의하기/);
   assert.equal((visibleMain.match(/Kling 국내 공식 총판/g) ?? []).length, 1);
   assert.equal((visibleMain.match(/Kling 본사 직접 계약/g) ?? []).length, 1);
   assert.doesNotMatch(html, /기업의 사용 계획에 맞춰 공급합니다/);

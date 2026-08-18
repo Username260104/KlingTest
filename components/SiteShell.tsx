@@ -14,7 +14,7 @@ export function SiteHeader() {
         </Link>
 
         <Link href="/contact" className="header-cta">
-          공급가 문의하기 <span aria-hidden="true">↗</span>
+          문의하기 <span aria-hidden="true">↗</span>
         </Link>
       </div>
     </header>
@@ -38,7 +38,7 @@ export function SiteFooter() {
         </div>
         <div>
           <span className="footer-label">CONTACT</span>
-          <Link href="/contact">공급가 문의하기</Link>
+          <Link href="/contact">문의하기</Link>
         </div>
         <div>
           <span className="footer-label">POLICY</span>

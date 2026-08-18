@@ -74,16 +74,12 @@ export default function Home() {
       >
         <div className="official-hero-content">
           <p className="official-hero-label">ENTRESOL · KLING FOR BUSINESS</p>
-          <p className="official-hero-status">
-            <span aria-hidden="true" /> Kling 국내 공식 총판
-          </p>
-          <h1 id="b2b-hero-title">기업을 위한 Kling 크레딧 공급</h1>
+          <h1 id="b2b-hero-title">Kling 국내 공식 총판</h1>
           <p className="official-hero-subtitle b2b-road-hero-lead">
-            소규모 테스트부터 대규모 프로젝트까지. 사용량과 일정에 맞춰 필요한
-            Kling 크레딧을 공급합니다.
+            기업 고객을 위한 Kling 크레딧 공급
           </p>
           <Link href="/contact" className="official-inquiry-button">
-            공급가 문의하기 <span aria-hidden="true">↗</span>
+            문의하기 <span aria-hidden="true">↗</span>
           </Link>
           <p className="official-hero-note">필요한 크레딧 수량을 아직 몰라도 괜찮습니다.</p>
         </div>
@@ -141,7 +137,7 @@ export default function Home() {
             ))}
           </div>
           <Link href="/contact" className="b2b-button b2b-button-primary b2b-guide-cta">
-            공급가 문의하기 <span aria-hidden="true">↗</span>
+            문의하기 <span aria-hidden="true">↗</span>
           </Link>
         </div>
       </section>
@@ -167,7 +163,7 @@ export default function Home() {
           <span>무엇을 만들지, 언제 필요한지만 알려주세요.</span>
         </div>
         <Link href="/contact" className="b2b-button b2b-button-primary">
-          공급가 문의하기 <span aria-hidden="true">↗</span>
+          문의하기 <span aria-hidden="true">↗</span>
         </Link>
       </section>
     </>
