@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const relationshipItems = [
-  { index: "01", label: "SUPPLY ENTITY", title: "공급 주체 HRC ENT" },
+  { index: "01", label: "SUPPLY ENTITY", title: "Kling 한국 공식 총판" },
   { index: "02", label: "DIRECT CONTRACT", title: "Kling 본사 직접 계약" },
   { index: "03", label: "B2B CREDIT SUPPLY", title: "기업 고객 대상 크레딧 공급" },
 ];
