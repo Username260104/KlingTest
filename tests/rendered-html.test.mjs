@@ -86,6 +86,8 @@ test("the landing page follows the specified seven-part flow", async () => {
   assert.match(html, /data-hero-version="road-v5"/);
   assert.match(html, /hero-road-pov-v5\.jpg/);
   const visibleMain = html.match(/<main>[\s\S]*?<\/main>/)?.[0] ?? "";
+  const visibleHero = visibleMain.match(/<section[^>]+class="official-hero b2b-road-hero"[\s\S]*?<\/section>/)?.[0] ?? "";
+  assert.match(visibleHero, /Kling 국내 공식 총판/);
   assert.equal((visibleMain.match(/Kling 국내 공식 총판/g) ?? []).length, 1);
   assert.equal((visibleMain.match(/Kling 본사 직접 계약/g) ?? []).length, 1);
   assert.doesNotMatch(html, /기업의 사용 계획에 맞춰 공급합니다/);

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const relationshipItems = [
-  { index: "01", label: "OFFICIAL DISTRIBUTOR", title: "Kling 국내 공식 총판" },
+  { index: "01", label: "SUPPLY ENTITY", title: "공급 주체 HRC ENT" },
   { index: "02", label: "DIRECT CONTRACT", title: "Kling 본사 직접 계약" },
   { index: "03", label: "B2B CREDIT SUPPLY", title: "기업 고객 대상 크레딧 공급" },
 ];
@@ -74,6 +74,9 @@ export default function Home() {
       >
         <div className="official-hero-content">
           <p className="official-hero-label">ENTRESOL · KLING FOR BUSINESS</p>
+          <p className="official-hero-status">
+            <span aria-hidden="true" /> Kling 국내 공식 총판
+          </p>
           <h1 id="b2b-hero-title">기업을 위한 Kling 크레딧 공급</h1>
           <p className="official-hero-subtitle b2b-road-hero-lead">
             소규모 테스트부터 대규모 프로젝트까지. 사용량과 일정에 맞춰 필요한
