@@ -14,7 +14,7 @@ export function SiteHeader() {
         </Link>
 
         <Link href="/contact" className="header-cta">
-          기업 공급가 문의 <span aria-hidden="true">↗</span>
+          공급가 문의하기 <span aria-hidden="true">↗</span>
         </Link>
       </div>
     </header>
@@ -34,15 +34,15 @@ export function SiteFooter() {
             </span>
             <span>Entresol</span>
           </div>
-          <p>기업 고객을 위한 Kling 크레딧 공급 상담</p>
+          <p>기업용 Kling 크레딧 공급</p>
         </div>
         <div>
           <span className="footer-label">CONTACT</span>
-          <Link href="/contact">기업 공급가 문의</Link>
+          <Link href="/contact">공급가 문의하기</Link>
         </div>
         <div>
           <span className="footer-label">POLICY</span>
-          <span id="privacy-policy">개인정보처리방침 · 제공 예정</span>
+          <span id="privacy-policy">개인정보처리방침 (준비 중)</span>
         </div>
       </div>
       <div className="page-shell footer-bottom">

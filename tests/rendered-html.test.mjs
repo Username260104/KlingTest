@@ -25,7 +25,7 @@ async function render(pathname = "/") {
 
 const routes = [
   ["/", "기업을 위한 Kling 크레딧 공급"],
-  ["/contact", "기업용 Kling 크레딧 공급 상담"],
+  ["/contact", "Kling 크레딧 공급 문의"],
 ];
 
 for (const [pathname, expectedText] of routes) {
@@ -60,11 +60,11 @@ test("the landing page follows the specified seven-part flow", async () => {
   const html = await response.text();
   const orderedCopy = [
     "기업을 위한 Kling 크레딧 공급",
-    "기업 도입을 위한 공식 공급 체계",
-    "도입 단계에 맞는 네 가지 공급 상담",
-    "상담에 필요한 정보는 간단합니다",
-    "문의부터 공급까지, 네 단계로 진행합니다",
-    "프로젝트에 맞는 공급 조건을 확인하세요",
+    "Kling 크레딧, 공식 경로로 공급합니다",
+    "어떤 방식으로 사용하실 예정인가요?",
+    "이 정도만 알려주시면 됩니다",
+    "문의 후에는 이렇게 진행됩니다",
+    "필요한 크레딧부터 함께 계산해 보세요",
     "site-footer",
   ];
 
@@ -89,7 +89,7 @@ test("the landing page follows the specified seven-part flow", async () => {
   assert.equal((visibleMain.match(/Kling 국내 공식 총판/g) ?? []).length, 1);
   assert.equal((visibleMain.match(/Kling 본사 직접 계약/g) ?? []).length, 1);
   assert.doesNotMatch(html, /기업의 사용 계획에 맞춰 공급합니다/);
-  assert.doesNotMatch(html, /이 상황으로 문의|공식 공급 관계를 투명하게 안내합니다|정확한 수량을 몰라도/);
+  assert.doesNotMatch(html, /이 상황으로 문의|공식 공급 관계를 투명하게 안내합니다|정확한 수량을 몰라도|공식 공급 체계|네 가지 공급 상담/);
   assert.doesNotMatch(
     html,
     /경쟁력 있는 가격|국내 최초|독점|QUICK GUIDE|CONTENT CHECK|PARTNER STATUS|확정된 공급 정보|크레딧 공급 안내/,

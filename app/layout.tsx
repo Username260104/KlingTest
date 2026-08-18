@@ -25,10 +25,10 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "%s | Entresol",
     },
     description:
-      "기업용 Kling 크레딧의 도입 규모와 공급 조건을 상담합니다.",
+      "Kling 크레딧 구매를 검토 중인 기업을 위한 공급 문의 페이지입니다.",
     openGraph: {
       title: "기업용 Kling 크레딧 공급 | Entresol",
-      description: "테스트 도입부터 대량 구매까지, 기업별 사용 규모에 맞는 Kling 크레딧 공급 상담",
+      description: "Kling 크레딧 구매를 검토 중이라면 필요한 수량과 일정을 함께 확인해 보세요.",
       url: origin,
       siteName: "Entresol",
       type: "website",
@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: "기업용 Kling 크레딧 공급 | Entresol",
-      description: "테스트 도입부터 대량 구매까지, 기업별 사용 규모에 맞는 Kling 크레딧 공급 상담",
+      description: "Kling 크레딧 구매를 검토 중이라면 필요한 수량과 일정을 함께 확인해 보세요.",
       images: [`${origin}/og-entresol-b2b.png`],
     },
   };

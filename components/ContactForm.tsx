@@ -46,10 +46,10 @@ export function ContactForm() {
       <div className="form-success" role="status" aria-live="polite">
         <div>
           <div className="success-mark" aria-hidden="true">✓</div>
-          <h2>입력 내용을 확인했습니다</h2>
-          <p>화면 검토용 프로토타입이므로 문의는 전송되지 않았습니다.</p>
+          <h2>입력하신 내용을 확인했습니다</h2>
+          <p>현재 프로토타입에서는 실제 문의가 전송되지 않습니다.</p>
           <button className="b2b-button b2b-button-secondary" type="button" onClick={() => setSubmitted(false)}>
-            내용 수정하기
+            입력 내용 수정하기
           </button>
         </div>
       </div>
@@ -61,7 +61,7 @@ export function ContactForm() {
       <section className="form-section">
         <div className="form-section-title">
           <span>01</span>
-          <h2>기본 정보</h2>
+          <h2>문의 정보</h2>
         </div>
         <div className="field-grid">
           <div className="field">
@@ -80,9 +80,10 @@ export function ContactForm() {
             <label htmlFor="inquiryType">문의 유형 <span className="required">*</span></label>
             <select id="inquiryType" name="inquiryType" defaultValue="" required onInvalid={handleInvalid} onInput={clearValidation}>
               <option value="" disabled>문의 유형을 선택해 주세요</option>
-              <option>크레딧 공급가 및 도입 상담</option>
-              <option>결제 및 기업 구매 서류</option>
-              <option>파트너십 및 사업 제휴</option>
+              <option>크레딧 공급가 문의</option>
+              <option>도입·사용 상담</option>
+              <option>결제 및 구매 서류</option>
+              <option>사업 제휴</option>
               <option>기타 문의</option>
             </select>
           </div>
@@ -91,7 +92,7 @@ export function ContactForm() {
             <textarea
               id="message"
               name="message"
-              placeholder="사용 목적과 궁금한 점을 알려주세요. 필요 수량은 미정이어도 됩니다."
+              placeholder="사용 목적과 궁금한 점을 적어주세요. 필요한 수량을 아직 모르셔도 괜찮습니다."
               required
               onInvalid={handleInvalid}
               onInput={clearValidation}
@@ -102,13 +103,13 @@ export function ContactForm() {
 
       <details className="optional-fields" open={hasPresetUsage || undefined}>
         <summary>
-          <span>선택 정보</span>
-          <small>사용 규모·구매 일정</small>
+          <span>추가 정보 (선택)</span>
+          <small>알고 계신 항목만 작성해 주세요</small>
         </summary>
         <div className="field-grid">
           <div className="field">
             <label htmlFor="contactId">연락처 또는 WeChat ID</label>
-            <input id="contactId" name="contactId" placeholder="전화번호 또는 WeChat ID" />
+            <input id="contactId" name="contactId" placeholder="전화번호 또는 WeChat ID를 입력해 주세요" />
           </div>
           <div className="field">
             <label htmlFor="industry">업종</label>
@@ -129,7 +130,7 @@ export function ContactForm() {
             </select>
           </div>
           <div className="field">
-            <label htmlFor="purpose">주요 용도</label>
+            <label htmlFor="purpose">주요 사용 목적</label>
             <select id="purpose" name="purpose" defaultValue="undecided">
               <option value="undecided">미정</option>
               <option>영상 생성</option>
@@ -143,15 +144,15 @@ export function ContactForm() {
           <div className="field full">
             <label htmlFor="experience">Kling 사용 현황</label>
             <select id="experience" name="experience" defaultValue="not-used">
-              <option value="not-used">사용 전</option>
-              <option>웹사이트에서 사용 중</option>
+              <option value="not-used">아직 사용하지 않음</option>
+              <option>Kling 웹사이트에서 사용 중</option>
               <option>API 테스트 경험 있음</option>
               <option>API를 제품에 연동해 사용 중</option>
             </select>
           </div>
           <div className="field">
-            <label htmlFor="scale">예상 사용 규모</label>
-            <input id="scale" name="scale" placeholder="예: 월 100건, 100,000 크레딧 또는 미정" />
+            <label htmlFor="scale">예상 사용량</label>
+            <input id="scale" name="scale" placeholder="예: 월 100건, 100,000 크레딧, 미정" />
           </div>
           <div className="field">
             <label htmlFor="timeline">구매 희망 시기</label>
@@ -170,13 +171,13 @@ export function ContactForm() {
         <input type="checkbox" name="privacyConsent" required onInvalid={handleInvalid} onInput={clearValidation} />
         <span>
           [필수] 상담을 위한 개인정보 수집·이용에 동의합니다.
-          <small> 정식 동의문은 문의 기능 적용 전에 제공됩니다.</small>
+          <small> 정식 동의문은 실제 문의 기능을 연결할 때 제공됩니다.</small>
         </span>
       </label>
       <button className="submit-button" type="submit">
-        입력 내용 확인 <span aria-hidden="true">↗</span>
+        입력 내용 확인하기 <span aria-hidden="true">↗</span>
       </button>
-      <p className="form-prototype-note">입력 내용은 전송하거나 저장하지 않습니다.</p>
+      <p className="form-prototype-note">입력하신 내용은 전송되거나 저장되지 않습니다.</p>
     </form>
   );
 }
