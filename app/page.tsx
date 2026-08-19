@@ -74,9 +74,9 @@ export default function Home() {
       >
         <div className="official-hero-content">
           <p className="official-hero-label">ENTRESOL · KLING FOR BUSINESS</p>
-          <h1 id="b2b-hero-title">Kling 국내 공식 총판</h1>
+          <h1 id="b2b-hero-title">Kling 공식 파트너, Entresol</h1>
           <p className="official-hero-subtitle b2b-road-hero-lead">
-            기업 고객을 위한 Kling 크레딧 공급
+            기업 전용 조건으로 크레딧을 제공합니다
           </p>
           <Link href="/contact" className="official-inquiry-button">
             문의하기 <span aria-hidden="true">↗</span>
