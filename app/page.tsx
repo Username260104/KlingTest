@@ -2,43 +2,43 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "기업용 Kling 크레딧 공급",
+  title: "Kling 공식 파트너, Entresol",
   description:
     "Kling 크레딧 구매를 검토 중인 기업을 위한 문의 페이지입니다. 필요한 수량이 정해지지 않아도 상담할 수 있습니다.",
 };
 
 const relationshipItems = [
-  { index: "01", label: "SUPPLY ENTITY", title: "Kling 한국 공식 총판" },
-  { index: "02", label: "DIRECT CONTRACT", title: "Kling 본사 직접 계약" },
-  { index: "03", label: "B2B CREDIT SUPPLY", title: "기업 고객 대상 크레딧 공급" },
+  { index: "01", label: "운영사", title: "HRC ENT (법인 설립 후 내용 채우기)" },
+  { index: "02", label: "계약", title: "Kling 본사와 공식 파트너 계약을 체결했습니다" },
+  { index: "03", label: "조건", title: "일반 구매 대비 유리한 기업 전용 조건" },
 ];
 
 const useCases = [
   {
     index: "01",
     title: "초기 테스트",
-    body: "Kling을 처음 사용한다면, 만들고 싶은 콘텐츠와 테스트 횟수부터 알려주세요.",
+    body: "Kling을 처음 사용한다면, 만들고 싶은 콘텐츠와 필요한 테스트 횟수부터 알려주세요.",
     cta: "초기 테스트 문의하기",
     value: "test",
   },
   {
     index: "02",
     title: "프로젝트 사용",
-    body: "캠페인 일정과 제작할 영상 수를 바탕으로 프로젝트에 필요한 크레딧을 계산합니다.",
+    body: "캠페인 일정과 제작 편수에 맞춰, 필요한 크레딧을 계산해 드립니다.",
     cta: "프로젝트 사용 문의하기",
     value: "project",
   },
   {
     index: "03",
     title: "정기적 사용",
-    body: "매달 필요한 크레딧과 구매 주기를 기준으로 구매 계획을 세웁니다.",
+    body: "매달 필요한 크레딧에 맞춰 구매 주기를 설계합니다.",
     cta: "정기 사용 문의하기",
     value: "recurring",
   },
   {
     index: "04",
     title: "대량 사용",
-    body: "대규모 제작을 앞두고 있다면 예상 사용량과 필요한 시기를 알려주세요.",
+    body: "대규모 제작을 앞두고 있다면, 예상 사용량과 필요한 시기를 알려주세요.",
     cta: "대량 사용 문의하기",
     value: "large",
   },
@@ -49,15 +49,15 @@ const guideItems = [
   { index: "02", title: "예상 생성량", body: "프로젝트 전체 또는 한 달 동안 만들 영상 수" },
   { index: "03", title: "평균 영상 조건", body: "영상 길이와 해상도, 사용할 주요 옵션" },
   { index: "04", title: "현재 사용 현황", body: "Kling 사용 여부와 남아 있는 크레딧" },
-  { index: "05", title: "구매 희망 시기", body: "크레딧 구매를 원하는 시기" },
+  { index: "05", title: "구매 희망 시기", body: "구매를 원하는 시기" },
   { index: "06", title: "예상 필요 크레딧", body: "알고 있는 수량, 모르면 미정" },
 ];
 
 const supplySteps = [
   { index: "01", title: "문의 접수", body: "회사 정보와 사용 목적을 남겨주세요." },
   { index: "02", title: "사용량 확인", body: "어떤 영상을 얼마나 만들지 확인하고, 필요한 크레딧을 함께 계산합니다." },
-  { index: "03", title: "공급가 안내", body: "확인한 사용량을 기준으로 공급가와 구매 조건을 알려드립니다." },
-  { index: "04", title: "크레딧 공급", body: "수량과 일정을 확정한 뒤 Kling 크레딧을 공급합니다." },
+  { index: "03", title: "가격 안내", body: "사용량에 맞는 가격과 구매 조건을 안내합니다." },
+  { index: "04", title: "크레딧 지급", body: "수량과 일정을 확정하면 Kling 크레딧을 지급합니다." },
 ];
 
 export default function Home() {
@@ -87,8 +87,8 @@ export default function Home() {
       <section id="official-relationship" className="b2b-section b2b-relationship" aria-labelledby="official-relationship-title">
         <div className="page-shell">
           <div className="b2b-section-heading b2b-section-heading-wide">
-            <p>OFFICIAL SUPPLY</p>
-            <h2 id="official-relationship-title">Kling 크레딧, 공식 경로로 공급합니다</h2>
+            <p>OFFICIAL PARTNER</p>
+            <h2 id="official-relationship-title">Kling 크레딧, 검증된 경로로 제공합니다</h2>
           </div>
           <div className="b2b-relationship-grid">
             {relationshipItems.map((item) => (
@@ -104,7 +104,7 @@ export default function Home() {
       <section id="use-cases" className="b2b-section page-shell" aria-labelledby="use-cases-title">
         <div className="b2b-section-heading">
           <p>USE CASES</p>
-          <h2 id="use-cases-title">어떤 방식으로 사용하실 예정인가요?</h2>
+          <h2 id="use-cases-title">어떻게 사용하실 계획인가요?</h2>
         </div>
         <div className="b2b-use-grid">
           {useCases.map((item) => (
@@ -140,7 +140,7 @@ export default function Home() {
 
       <section id="supply-process" className="b2b-section page-shell" aria-labelledby="supply-process-title">
         <div className="b2b-section-heading">
-          <p>SUPPLY PROCESS</p>
+          <p>PROCESS</p>
           <h2 id="supply-process-title">문의 후에는 이렇게 진행됩니다</h2>
         </div>
         <ol className="b2b-process-grid">
