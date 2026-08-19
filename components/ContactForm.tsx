@@ -101,15 +101,15 @@ export function ContactForm() {
         </div>
       </section>
 
-      <details className="optional-fields" open={hasPresetUsage || undefined}>
-        <summary>
+      <details className="optional-fields" open>
+        <summary onClick={(e) => e.preventDefault()} style={{ cursor: 'default' }}>
           <span>추가 정보 (선택)</span>
           <small>알고 계신 항목만 작성해 주세요</small>
         </summary>
         <div className="field-grid">
           <div className="field">
-            <label htmlFor="contactId">연락처 또는 WeChat ID</label>
-            <input id="contactId" name="contactId" placeholder="전화번호 또는 WeChat ID를 입력해 주세요" />
+            <label htmlFor="contactId">연락처</label>
+            <input id="contactId" name="contactId" placeholder="전화번호를 입력해 주세요" />
           </div>
           <div className="field">
             <label htmlFor="industry">업종</label>
