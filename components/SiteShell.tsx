@@ -34,7 +34,7 @@ export function SiteFooter() {
             </span>
             <span>Entresol</span>
           </div>
-          <p>기업용 Kling 크레딧 공급</p>
+          <p>Kling 크레딧, 기업 공식 파트너</p>
         </div>
         <div>
           <span className="footer-label">CONTACT</span>
@@ -46,8 +46,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="page-shell footer-bottom">
-        <span>© 2026 ENTRESOL</span>
-        <span>KLING FOR BUSINESS</span>
+        <span>© 2026 ENTRESOL · KLING FOR BUSINESS</span>
       </div>
     </footer>
   );
