@@ -2379,6 +2379,17 @@ body {
     linear-gradient(180deg, rgb(10 10 10 / 15%), transparent 65%);
 }
 
+.official-hero-video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 52%;
+  pointer-events: none;
+}
+
 .official-hero-content {
   width: min(100%, 1040px);
   display: flex;
@@ -4076,6 +4087,10 @@ body {
 }
 
 @media (max-width: 720px) {
+  .official-hero-video {
+    object-position: 64% center;
+  }
+
   .b2b-road-hero h1 {
     max-width: 350px;
     font-size: clamp(38px, 11vw, 52px);
@@ -4085,5 +4100,11 @@ body {
   .b2b-road-hero-lead {
     max-width: 340px;
     font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .official-hero-video {
+    display: none;
   }
 }

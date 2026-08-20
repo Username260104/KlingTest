@@ -87,8 +87,16 @@ test("the landing page follows the specified seven-part flow", async () => {
   assert.match(html, /hero-road-pov-v5\.jpg/);
   const visibleMain = html.match(/<main>[\s\S]*?<\/main>/)?.[0] ?? "";
   const visibleHero = visibleMain.match(/<section[^>]+class="official-hero b2b-road-hero"[\s\S]*?<\/section>/)?.[0] ?? "";
+  const heroVideo = visibleHero.match(/<video[^>]*class="official-hero-video"[^>]*>/)?.[0] ?? "";
   assert.match(visibleHero, /Kling 국내 공식 총판/);
   assert.match(visibleHero, /기업 고객을 위한 Kling 크레딧 공급/);
+  assert.match(heroVideo, /autoPlay=""/);
+  assert.match(heroVideo, /muted=""/);
+  assert.match(heroVideo, /loop=""/);
+  assert.match(heroVideo, /playsInline=""/);
+  assert.match(heroVideo, /poster="\/hero-road-pov-v5\.jpg"/);
+  assert.match(visibleHero, /src="\/gallery\/hero-road-pov-v5\.mp4"/);
+  assert.doesNotMatch(heroVideo, /\bcontrols(?:="")?/);
   assert.doesNotMatch(visibleHero, /official-hero-status/);
   assert.doesNotMatch(visibleHero, /필요한 크레딧 수량을 아직 몰라도 괜찮습니다/);
   assert.doesNotMatch(html, /공급가 문의하기/);

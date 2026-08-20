@@ -35,11 +35,20 @@ export default function Home() {
         className="official-hero b2b-road-hero"
         aria-labelledby="b2b-hero-title"
         data-hero-version="road-v5"
-        style={{
-          backgroundImage:
-            'radial-gradient(circle at 50% 44%, rgb(1 18 28 / 30%), transparent 34rem), linear-gradient(180deg, rgb(2 18 26 / 24%) 0%, rgb(2 18 26 / 32%) 56%, rgb(2 18 26 / 48%) 100%), url("/hero-road-pov-v5.jpg")',
-        }}
       >
+        <video
+          className="official-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/hero-road-pov-v5.jpg"
+          aria-hidden="true"
+          tabIndex={-1}
+        >
+          <source src="/gallery/hero-road-pov-v5.mp4" type="video/mp4" />
+        </video>
         <div className="official-hero-content">
           <p className="official-hero-label">ENTRESOL · KLING FOR BUSINESS</p>
           <h1 id="b2b-hero-title">Kling 공식 파트너, Entresol</h1>
