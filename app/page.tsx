@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PartnerCarousel } from "../components/PartnerCarousel";
 
 export const metadata: Metadata = {
   title: "Kling 공식 파트너, Entresol",
@@ -24,22 +25,6 @@ const contractTerms = [
     title: "국내 법인과 직접 계약",
     body: "해외 결제 절차 없이 원화로 정산하고, 세금계산서를 발행합니다.",
   },
-];
-
-const guideItems = [
-  { index: "01", title: "사용 목적", body: "광고 시안, 제품·브랜드 영상, 소셜 숏폼, 프리비주얼" },
-  { index: "02", title: "예상 생성량", body: "프로젝트 전체 또는 한 달 동안 만들 영상 수" },
-  { index: "03", title: "평균 영상 조건", body: "영상 길이와 해상도, 사용할 주요 옵션" },
-  { index: "04", title: "현재 사용 현황", body: "Kling 사용 여부와 남아 있는 크레딧" },
-  { index: "05", title: "구매 희망 시기", body: "구매를 원하는 시기" },
-  { index: "06", title: "예상 필요 크레딧", body: "알고 있는 수량, 모르면 미정" },
-];
-
-const supplySteps = [
-  { index: "01", title: "문의 접수", body: "회사 정보와 사용 목적을 남겨주세요." },
-  { index: "02", title: "사용량 확인", body: "어떤 영상을 얼마나 만들지 확인하고, 필요한 크레딧을 함께 계산합니다." },
-  { index: "03", title: "가격 안내", body: "사용량에 맞는 가격과 구매 조건을 안내합니다." },
-  { index: "04", title: "크레딧 지급", body: "수량과 일정을 확정하면 Kling 크레딧을 지급합니다." },
 ];
 
 export default function Home() {
@@ -99,46 +84,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="inquiry-guide" className="b2b-section b2b-guide" aria-labelledby="inquiry-guide-title">
+      <section id="partners" className="b2b-section b2b-partners" aria-labelledby="partners-title">
         <div className="page-shell">
-          <div className="b2b-section-heading b2b-section-heading-wide">
-            <p>INQUIRY GUIDE</p>
-            <h2 id="inquiry-guide-title">이 정도만 알려주시면 됩니다</h2>
+          <div className="b2b-section-heading b2b-section-heading-center">
+            <p>PARTNERS &amp; CLIENTS</p>
+            <h2 id="partners-title">함께하고 있는 기업</h2>
+            <span>브랜드와 제작사, 플랫폼까지 각자의 방식으로 Kling을 공급받고 있습니다.</span>
           </div>
-          <div className="b2b-guide-grid">
-            {guideItems.map((item) => (
-              <article key={item.index}>
-                <span>{item.index}</span>
-                <div><h3>{item.title}</h3><p>{item.body}</p></div>
-              </article>
-            ))}
-          </div>
-          <Link href="/contact" className="b2b-button b2b-button-primary b2b-guide-cta">
-            문의하기 <span aria-hidden="true">↗</span>
-          </Link>
+          <PartnerCarousel />
         </div>
       </section>
 
-      <section id="supply-process" className="b2b-section page-shell" aria-labelledby="supply-process-title">
-        <div className="b2b-section-heading">
-          <p>PROCESS</p>
-          <h2 id="supply-process-title">문의 후에는 이렇게 진행됩니다</h2>
-        </div>
-        <ol className="b2b-process-grid">
-          {supplySteps.map((step) => (
-            <li key={step.index}>
-              <span>{step.index}</span><h3>{step.title}</h3><p>{step.body}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section className="b2b-final page-shell" aria-labelledby="b2b-final-title">
-        <div>
-          <p>CONTACT</p>
-          <h2 id="b2b-final-title">필요한 크레딧부터 함께 계산해 보세요</h2>
-          <span>무엇을 만들지, 언제 필요한지만 알려주세요.</span>
-        </div>
+      <section className="b2b-final-cta page-shell">
         <Link href="/contact" className="b2b-button b2b-button-primary">
           문의하기 <span aria-hidden="true">↗</span>
         </Link>
