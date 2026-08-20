@@ -5,7 +5,7 @@ import { PartnerCarousel } from "../components/PartnerCarousel";
 export const metadata: Metadata = {
   title: "Kling 공식 파트너, Entresol",
   description:
-    "Kling 크레딧 구매를 검토 중인 기업을 위한 문의 페이지입니다. 필요한 수량이 정해지지 않아도 상담할 수 있습니다.",
+    "Kling API 도입을 검토 중인 기업을 위한 문의 페이지입니다. 필요한 사용량이 정해지지 않아도 상담할 수 있습니다.",
 };
 
 const relationshipItems = [

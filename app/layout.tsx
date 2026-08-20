@@ -25,10 +25,10 @@ export async function generateMetadata(): Promise<Metadata> {
       template: "%s | Entresol",
     },
     description:
-      "Kling 크레딧 구매를 검토 중인 기업을 위한 공급 문의 페이지입니다.",
+      "Kling API 도입을 검토 중인 기업을 위한 공급 문의 페이지입니다.",
     openGraph: {
-      title: "기업용 Kling 크레딧 공급 | Entresol",
-      description: "Kling 크레딧 구매를 검토 중이라면 필요한 수량과 일정을 함께 확인해 보세요.",
+      title: "기업용 Kling API 공급 | Entresol",
+      description: "Kling API 도입을 검토 중이라면 필요한 사용량과 일정을 함께 확인해 보세요.",
       url: origin,
       siteName: "Entresol",
       type: "website",
@@ -37,14 +37,14 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${origin}/og-entresol-b2b.png`,
           width: 1200,
           height: 630,
-          alt: "Entresol — 기업을 위한 Kling 크레딧 공급",
+          alt: "Entresol — 기업을 위한 Kling API 공급",
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: "기업용 Kling 크레딧 공급 | Entresol",
-      description: "Kling 크레딧 구매를 검토 중이라면 필요한 수량과 일정을 함께 확인해 보세요.",
+      title: "기업용 Kling API 공급 | Entresol",
+      description: "Kling API 도입을 검토 중이라면 필요한 사용량과 일정을 함께 확인해 보세요.",
       images: [`${origin}/og-entresol-b2b.png`],
     },
   };

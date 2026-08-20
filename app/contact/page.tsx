@@ -3,9 +3,9 @@ import { Suspense } from "react";
 import { ContactForm } from "../../components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Kling 크레딧 공급가 문의",
+  title: "Kling API 공급가 문의",
   description:
-    "Kling 크레딧 구매를 검토 중이라면 사용 목적과 구매 일정을 알려주세요. 필요한 수량은 나중에 정해도 됩니다.",
+    "Kling API 도입을 검토 중이라면 사용 목적과 도입 일정을 알려주세요. 필요한 사용량은 나중에 정해도 됩니다.",
 };
 
 const supplySteps = [
