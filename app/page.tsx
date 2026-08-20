@@ -10,37 +10,19 @@ export const metadata: Metadata = {
 const relationshipItems = [
   { index: "01", label: "운영사", title: "HRC ENT (법인 설립 후 내용 채우기)" },
   { index: "02", label: "계약", title: "Kling 본사와 공식 파트너 계약을 체결했습니다" },
-  { index: "03", label: "조건", title: "일반 구매 대비 유리한 기업 전용 조건" },
+  { index: "03", label: "공급 범위", title: "Kling API와 크레딧을 국내 기업에 직접 공급합니다" },
 ];
 
-const useCases = [
+const contractTerms = [
   {
     index: "01",
-    title: "초기 테스트",
-    body: "Kling을 처음 사용한다면, 만들고 싶은 콘텐츠와 필요한 테스트 횟수부터 알려주세요.",
-    cta: "초기 테스트 문의하기",
-    value: "test",
+    title: "기준가 대비 할인된 Unit 단가",
+    body: "사용량에 맞춘 단가와 동시 생성 개수 제한까지 협의할 수 있습니다.",
   },
   {
     index: "02",
-    title: "프로젝트 사용",
-    body: "캠페인 일정과 제작 편수에 맞춰, 필요한 크레딧을 계산해 드립니다.",
-    cta: "프로젝트 사용 문의하기",
-    value: "project",
-  },
-  {
-    index: "03",
-    title: "정기적 사용",
-    body: "매달 필요한 크레딧에 맞춰 구매 주기를 설계합니다.",
-    cta: "정기 사용 문의하기",
-    value: "recurring",
-  },
-  {
-    index: "04",
-    title: "대량 사용",
-    body: "대규모 제작을 앞두고 있다면, 예상 사용량과 필요한 시기를 알려주세요.",
-    cta: "대량 사용 문의하기",
-    value: "large",
+    title: "국내 법인과 직접 계약",
+    body: "해외 결제 절차 없이 원화로 정산하고, 세금계산서를 발행합니다.",
   },
 ];
 
@@ -76,7 +58,7 @@ export default function Home() {
           <p className="official-hero-label">ENTRESOL · KLING FOR BUSINESS</p>
           <h1 id="b2b-hero-title">Kling 공식 파트너, Entresol</h1>
           <p className="official-hero-subtitle b2b-road-hero-lead">
-            기업 전용 조건으로 크레딧을 제공합니다
+            기업 전용 조건으로 API를 제공합니다
           </p>
           <Link href="/contact" className="official-inquiry-button">
             문의하기 <span aria-hidden="true">↗</span>
@@ -103,16 +85,15 @@ export default function Home() {
 
       <section id="use-cases" className="b2b-section page-shell" aria-labelledby="use-cases-title">
         <div className="b2b-section-heading">
-          <p>USE CASES</p>
-          <h2 id="use-cases-title">어떻게 사용하실 계획인가요?</h2>
+          <p>CONTRACT TERMS</p>
+          <h2 id="use-cases-title">Entresol에서만 가능한 조건</h2>
         </div>
         <div className="b2b-use-grid">
-          {useCases.map((item) => (
+          {contractTerms.map((item) => (
             <article key={item.index}>
               <span>{item.index}</span>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
-              <Link href={`/contact?use=${item.value}`}>{item.cta} <span aria-hidden="true">↗</span></Link>
             </article>
           ))}
         </div>
