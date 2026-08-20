@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { repeatForStrip, useInfiniteStrip } from "./useInfiniteStrip";
 
 // TODO: 실제 고객사·협력사로 교체할 것. 아래 5곳은 레이아웃 확인용 예시이며 실존하는 기업이 아닙니다.
 // 대외 공개 전 반드시 실제 거래처와 로고 사용 허락을 받은 목록으로 대체해야 합니다.
@@ -37,131 +38,47 @@ const partners = [
   },
 ];
 
+const anchorIndex = Math.floor(partners.length / 2);
+const loop = repeatForStrip(partners);
+
 export function PartnerCarousel() {
-  const [active, setActive] = useState(0);
-  const [shift, setShift] = useState(0);
-  const regionRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLUListElement>(null);
-  const last = partners.length - 1;
-
-  const go = useCallback(
-    (next: number) => {
-      setActive(Math.min(Math.max(next, 0), last));
-    },
-    [last],
-  );
-
-  // 활성 카드의 왼쪽 모서리를 셸 왼쪽 선에 맞추되, 마지막 카드가 오른쪽 끝에 닿으면 더 밀지 않는다.
-  useLayoutEffect(() => {
-    const track = trackRef.current;
-    const viewport = track?.parentElement;
-    if (!track || !viewport) return;
-
-    const update = () => {
-      const card = track.children[active] as HTMLElement | undefined;
-      if (!card) return;
-      const maxShift = Math.max(track.scrollWidth - viewport.clientWidth, 0);
-      setShift(Math.min(card.offsetLeft, maxShift));
-    };
-
-    update();
-    const observer = new ResizeObserver(update);
-    observer.observe(track);
-    observer.observe(viewport);
-    return () => observer.disconnect();
-  }, [active]);
-
-  useEffect(() => {
-    const region = regionRef.current;
-    if (!region) return;
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        setActive((current) => Math.max(current - 1, 0));
-      }
-      if (event.key === "ArrowRight") {
-        event.preventDefault();
-        setActive((current) => Math.min(current + 1, last));
-      }
-    };
-
-    region.addEventListener("keydown", onKeyDown);
-    return () => region.removeEventListener("keydown", onKeyDown);
-  }, [last]);
+  // 두 번째 묶음의 가운데 카드가 시작 위치다.
+  const [centered, setCentered] = useState(partners.length + anchorIndex);
+  const scrollerRef = useInfiniteStrip<HTMLUListElement>({
+    setSize: partners.length,
+    anchorIndex,
+    onCenterChange: setCentered,
+  });
 
   return (
-    <div
-      className="partner-carousel"
-      ref={regionRef}
-      role="group"
-      aria-roledescription="캐러셀"
-      aria-label="고객사 및 협력사"
-      tabIndex={0}
-    >
-      <div className="partner-viewport">
-        <ul
-          className="partner-track"
-          ref={trackRef}
-          style={{ "--shift": `${shift}px` } as React.CSSProperties}
-        >
-          {partners.map((item, index) => (
-            <li
-              key={item.company}
-              className="partner-card"
-              data-active={index === active ? "true" : undefined}
-            >
-              {/* 실제 고객사 로고로 교체할 자리 */}
-              <img
-                className="partner-logo"
-                src={item.logo}
-                alt={`${item.company} 로고`}
-                width={132}
-                height={28}
-              />
-              <p className="partner-name">{item.company}</p>
-              <p className="partner-meta">
-                <span>{item.industry}</span>
-                <span aria-hidden="true">·</span>
-                <span>{item.usage}</span>
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="partner-controls">
-        <button
-          type="button"
-          className="partner-arrow"
-          onClick={() => go(active - 1)}
-          disabled={active === 0}
-          aria-label="이전 고객사 보기"
-        >
-          <span aria-hidden="true">←</span>
-        </button>
-        <div className="partner-dots">
-          {partners.map((item, index) => (
-            <button
-              key={item.company}
-              type="button"
-              onClick={() => go(index)}
-              data-active={index === active ? "true" : undefined}
-              aria-label={`${item.company} 보기`}
-              aria-current={index === active ? "true" : undefined}
+    <div className="strip-frame">
+      <ul className="partner-strip" ref={scrollerRef} aria-label="고객사 및 협력사">
+        {loop.map(({ item, copy, index }, domIndex) => (
+          <li
+            key={`${copy}-${index}`}
+            className="partner-card"
+            data-active={domIndex === centered ? "true" : undefined}
+            aria-hidden={copy === 0 ? undefined : "true"}
+          >
+            <img
+              className="partner-logo"
+              src={item.logo}
+              alt={copy === 0 ? `${item.company} 로고` : ""}
+              width={132}
+              height={28}
+              draggable={false}
             />
-          ))}
-        </div>
-        <button
-          type="button"
-          className="partner-arrow"
-          onClick={() => go(active + 1)}
-          disabled={active === last}
-          aria-label="다음 고객사 보기"
-        >
-          <span aria-hidden="true">→</span>
-        </button>
-      </div>
+            <p className="partner-name">{item.company}</p>
+            <p className="partner-meta">
+              <span>{item.industry}</span>
+              <span aria-hidden="true">·</span>
+              <span>{item.usage}</span>
+            </p>
+          </li>
+        ))}
+      </ul>
+      <span className="strip-hint strip-hint-left" aria-hidden="true" />
+      <span className="strip-hint strip-hint-right" aria-hidden="true" />
     </div>
   );
 }

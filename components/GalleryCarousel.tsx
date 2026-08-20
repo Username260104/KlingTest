@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
+import { repeatForStrip, useInfiniteStrip } from "./useInfiniteStrip";
 
-// TODO: kling-opening-party.jpg 는 교체용 플레이스홀더입니다. 실제 현장 사진으로 덮어써야 합니다.
-const slides = [
+type Slide = { src: string; alt: string };
+
+const slides: Slide[] = [
   { src: "/gallery/hero-road-pov-v5.jpg", alt: "해안 도로를 달리는 차량 시점 영상 스틸" },
   { src: "/gallery/hero-forest-photo-v3.jpg", alt: "안개 낀 숲을 담은 영상 스틸" },
   { src: "/gallery/kling-opening-party.jpg", alt: "Kling AI 오프닝 파티 현장" },
@@ -11,105 +13,78 @@ const slides = [
   { src: "/gallery/hero-mountain-photo-v2.jpg", alt: "설산 능선을 담은 영상 스틸" },
 ];
 
-const anchorIndex = Math.floor(slides.length / 2);
+const loop = repeatForStrip(slides);
 
 export function GalleryCarousel() {
-  const scrollerRef = useRef<HTMLUListElement>(null);
+  const [zoomed, setZoomed] = useState<Slide | null>(null);
+  const scrollerRef = useInfiniteStrip<HTMLUListElement>({
+    setSize: slides.length,
+    anchorIndex: Math.floor(slides.length / 2),
+  });
 
-  // 가운데 이미지를 처음 화면 중앙에 맞춰 둔다.
-  // 사용자가 한 번이라도 스크롤한 뒤에는 위치를 건드리지 않는다.
+  // 열려 있는 동안 Esc로 닫고, 뒤쪽 페이지는 스크롤되지 않게 한다.
   useEffect(() => {
-    const scroller = scrollerRef.current;
-    const anchor = scroller?.children[anchorIndex] as HTMLElement | undefined;
-    if (!scroller || !anchor) return;
+    if (!zoomed) return;
 
-    let touched = false;
-    const markTouched = () => {
-      touched = true;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setZoomed(null);
     };
 
-    const center = () => {
-      if (touched) return;
-      scroller.scrollLeft =
-        anchor.offsetLeft - (scroller.clientWidth - anchor.clientWidth) / 2;
-    };
-
-    center();
-    // 이미지 로딩이나 리사이즈로 폭이 바뀌면 다시 맞춘다.
-    const observer = new ResizeObserver(center);
-    observer.observe(scroller);
-    scroller.addEventListener("pointerdown", markTouched);
-    scroller.addEventListener("wheel", markTouched, { passive: true });
-    scroller.addEventListener("touchstart", markTouched, { passive: true });
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKeyDown);
 
     return () => {
-      observer.disconnect();
-      scroller.removeEventListener("pointerdown", markTouched);
-      scroller.removeEventListener("wheel", markTouched);
-      scroller.removeEventListener("touchstart", markTouched);
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
     };
-  }, []);
-
-  // 마우스 사용자를 위한 드래그 스크롤 (터치·트랙패드는 네이티브 스크롤 사용).
-  useEffect(() => {
-    const scroller = scrollerRef.current;
-    if (!scroller) return;
-
-    let pointerId: number | null = null;
-    let startX = 0;
-    let startScroll = 0;
-    let dragged = false;
-
-    const onPointerDown = (event: PointerEvent) => {
-      if (event.pointerType !== "mouse" || event.button !== 0) return;
-      pointerId = event.pointerId;
-      startX = event.clientX;
-      startScroll = scroller.scrollLeft;
-      dragged = false;
-      scroller.setPointerCapture(pointerId);
-      scroller.dataset.dragging = "true";
-    };
-
-    const onPointerMove = (event: PointerEvent) => {
-      if (pointerId !== event.pointerId) return;
-      const delta = event.clientX - startX;
-      if (Math.abs(delta) > 3) dragged = true;
-      scroller.scrollLeft = startScroll - delta;
-    };
-
-    const endDrag = (event: PointerEvent) => {
-      if (pointerId !== event.pointerId) return;
-      scroller.releasePointerCapture(pointerId);
-      pointerId = null;
-      delete scroller.dataset.dragging;
-    };
-
-    const onClick = (event: MouseEvent) => {
-      if (dragged) event.preventDefault();
-    };
-
-    scroller.addEventListener("pointerdown", onPointerDown);
-    scroller.addEventListener("pointermove", onPointerMove);
-    scroller.addEventListener("pointerup", endDrag);
-    scroller.addEventListener("pointercancel", endDrag);
-    scroller.addEventListener("click", onClick, true);
-
-    return () => {
-      scroller.removeEventListener("pointerdown", onPointerDown);
-      scroller.removeEventListener("pointermove", onPointerMove);
-      scroller.removeEventListener("pointerup", endDrag);
-      scroller.removeEventListener("pointercancel", endDrag);
-      scroller.removeEventListener("click", onClick, true);
-    };
-  }, []);
+  }, [zoomed]);
 
   return (
-    <ul className="gallery-strip" ref={scrollerRef} aria-label="현장 및 제작 이미지">
-      {slides.map((slide) => (
-        <li key={slide.src}>
-          <img src={slide.src} alt={slide.alt} draggable={false} loading="lazy" />
-        </li>
-      ))}
-    </ul>
+    <div className="strip-frame">
+      <ul className="gallery-strip" ref={scrollerRef} aria-label="현장 및 제작 이미지">
+        {loop.map(({ item, copy, index }) => (
+          <li
+            key={`${copy}-${index}`}
+            // 첫 묶음만 읽히게 하고 나머지 반복분은 보조기기에서 숨긴다.
+            aria-hidden={copy === 0 ? undefined : "true"}
+          >
+            <button
+              type="button"
+              className="gallery-shot"
+              onClick={() => setZoomed(item)}
+              tabIndex={copy === 0 ? undefined : -1}
+              aria-label={copy === 0 ? `${item.alt} 크게 보기` : undefined}
+            >
+              <img
+                src={item.src}
+                alt={copy === 0 ? item.alt : ""}
+                draggable={false}
+                loading="lazy"
+              />
+            </button>
+          </li>
+        ))}
+      </ul>
+      <span className="strip-hint strip-hint-left" aria-hidden="true" />
+      <span className="strip-hint strip-hint-right" aria-hidden="true" />
+
+      {zoomed ? (
+        <div
+          className="gallery-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={zoomed.alt}
+          onClick={() => setZoomed(null)}
+        >
+          <img
+            src={zoomed.src}
+            alt={zoomed.alt}
+            onClick={(event) => event.stopPropagation()}
+            draggable={false}
+          />
+        </div>
+      ) : null}
+    </div>
   );
 }
