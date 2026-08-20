@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { GalleryCarousel } from "../components/GalleryCarousel";
 import { PartnerCarousel } from "../components/PartnerCarousel";
 
 export const metadata: Metadata = {
@@ -82,6 +83,10 @@ export default function Home() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section id="gallery" className="b2b-gallery" aria-label="현장 및 제작 이미지">
+        <GalleryCarousel />
       </section>
 
       <section id="partners" className="b2b-section b2b-partners" aria-labelledby="partners-title">
