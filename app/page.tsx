@@ -86,7 +86,7 @@ export default function Home() {
 
       <section id="partners" className="b2b-section b2b-partners" aria-labelledby="partners-title">
         <div className="page-shell">
-          <div className="b2b-section-heading b2b-section-heading-center">
+          <div className="b2b-section-heading">
             <p>PARTNERS &amp; CLIENTS</p>
             <h2 id="partners-title">함께하고 있는 기업</h2>
             <span>브랜드와 제작사, 플랫폼까지 각자의 방식으로 Kling을 공급받고 있습니다.</span>

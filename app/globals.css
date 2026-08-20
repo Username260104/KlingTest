@@ -3563,21 +3563,13 @@ body {
 }
 
 .b2b-partners {
-  /* 트랙이 100vw로 확장될 때 스크롤바 폭만큼 생기는 가로 넘침을 잘라낸다 */
-  overflow-x: clip;
   border-block: 1px solid var(--color-border-container);
   background: var(--color-bg-page);
-}
-
-.b2b-section-heading-center {
-  margin-inline: auto;
-  text-align: center;
 }
 
 .partner-carousel {
   --card-w: 300px;
   --card-gap: 20px;
-  --card-step: calc(var(--card-w) + var(--card-gap));
 
   margin-top: 52px;
   outline: none;
@@ -3590,21 +3582,17 @@ body {
 }
 
 .partner-viewport {
-  /* 카드가 좌우로 잘려 나가도록 셸 폭을 넘어 확장 */
-  width: 100vw;
-  margin-left: 50%;
+  /* 페이지 셸 폭에 맞춰 잘라낸다 — 첫 카드가 다른 섹션 그리드와 같은 선에서 시작 */
   overflow: hidden;
-  transform: translateX(-50%);
-  mask-image: linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent);
 }
 
 .partner-track {
   display: flex;
   gap: var(--card-gap);
-  margin: 0 0 0 50%;
+  margin: 0;
   padding: 12px 0;
   list-style: none;
-  transform: translateX(calc(-1 * (var(--active) * var(--card-step) + var(--card-w) / 2)));
+  transform: translateX(calc(-1 * var(--shift, 0px)));
   transition: transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
@@ -3660,7 +3648,6 @@ body {
 .partner-controls {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 22px;
   margin-top: 34px;
 }
@@ -3916,6 +3903,10 @@ body {
     --card-gap: 14px;
 
     margin-top: 34px;
+  }
+
+  .partner-controls {
+    justify-content: center;
   }
 
   .partner-card {

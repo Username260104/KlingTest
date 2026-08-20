@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 
 // TODO: 실제 고객사·협력사로 교체할 것. 아래 5곳은 레이아웃 확인용 예시이며 실존하는 기업이 아닙니다.
 // 대외 공개 전 반드시 실제 거래처와 로고 사용 허락을 받은 목록으로 대체해야 합니다.
@@ -39,7 +39,9 @@ const partners = [
 
 export function PartnerCarousel() {
   const [active, setActive] = useState(0);
+  const [shift, setShift] = useState(0);
   const regionRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLUListElement>(null);
   const last = partners.length - 1;
 
   const go = useCallback(
@@ -48,6 +50,26 @@ export function PartnerCarousel() {
     },
     [last],
   );
+
+  // 활성 카드의 왼쪽 모서리를 셸 왼쪽 선에 맞추되, 마지막 카드가 오른쪽 끝에 닿으면 더 밀지 않는다.
+  useLayoutEffect(() => {
+    const track = trackRef.current;
+    const viewport = track?.parentElement;
+    if (!track || !viewport) return;
+
+    const update = () => {
+      const card = track.children[active] as HTMLElement | undefined;
+      if (!card) return;
+      const maxShift = Math.max(track.scrollWidth - viewport.clientWidth, 0);
+      setShift(Math.min(card.offsetLeft, maxShift));
+    };
+
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(track);
+    observer.observe(viewport);
+    return () => observer.disconnect();
+  }, [active]);
 
   useEffect(() => {
     const region = regionRef.current;
@@ -78,7 +100,11 @@ export function PartnerCarousel() {
       tabIndex={0}
     >
       <div className="partner-viewport">
-        <ul className="partner-track" style={{ "--active": active } as React.CSSProperties}>
+        <ul
+          className="partner-track"
+          ref={trackRef}
+          style={{ "--shift": `${shift}px` } as React.CSSProperties}
+        >
           {partners.map((item, index) => (
             <li
               key={item.company}
